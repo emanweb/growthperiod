@@ -1,0 +1,21 @@
+.DS_Store
+Thumbs.db
+
+# Local logs
+debug.log
+error_log
+*.log
+
+# Local editor/OS files
+.vscode/
+.idea/
+
+# Dependency/build artifacts (if introduced later)
+node_modules/
+dist/
+build/
+
+# Environment overrides
+.env
+.env.*
+!.env.example
