@@ -194,12 +194,16 @@ done
 if ((DRY_RUN)); then
   if [[ -n "$STAGING_SSH_KEY" ]]; then
     echo "[dry-run] ssh -p ${STAGING_SSH_PORT} -i '${STAGING_SSH_KEY}' ${TARGET} sudo -n chown -R '${STAGING_CHOWN_TARGET}' '${STAGING_THEME_PATH}'"
+    echo "[dry-run] ssh -p ${STAGING_SSH_PORT} -i '${STAGING_SSH_KEY}' ${TARGET} sudo -n wo clean --all"
   else
     echo "[dry-run] ssh -p ${STAGING_SSH_PORT} ${TARGET} sudo -n chown -R '${STAGING_CHOWN_TARGET}' '${STAGING_THEME_PATH}'"
+    echo "[dry-run] ssh -p ${STAGING_SSH_PORT} ${TARGET} sudo -n wo clean --all"
   fi
 else
   ssh "${SSH_ARGS[@]}" "$TARGET" "sudo -n chown -R '$STAGING_CHOWN_TARGET' '$STAGING_THEME_PATH'"
   echo "Ownership updated: ${STAGING_CHOWN_TARGET} ${STAGING_THEME_PATH}"
+  ssh "${SSH_ARGS[@]}" "$TARGET" "sudo -n wo clean --all"
+  echo "Cache cleaned: wo clean --all"
 fi
 
 echo "Deploy complete."
