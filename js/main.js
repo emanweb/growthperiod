@@ -814,6 +814,10 @@ const teamSliders = () => {
             return;
         }
 
+        if (typeof Swiper !== 'function') {
+            return;
+        }
+
         new Swiper(sliderElement, {
             loop: true,
             spaceBetween: 10,
