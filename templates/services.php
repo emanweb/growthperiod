@@ -215,7 +215,7 @@ get_header('', ["headerClasses" => "header--dark"]);
 				?>
 				</picture>
 				<?php } ?>
-              <div class="services-recruiting__image-tile"><span data-aos="fade-in" data-aos-delay="50"></span><span data-aos="fade-in" data-aos-delay="100"></span><span data-aos="fade-in" data-aos-delay="150"></span><span data-aos="fade-in" data-aos-delay="250"></span><span data-aos="fade-in" data-aos-delay="300"></span><span data-aos="fade-in" data-aos-delay="350"></span></div>
+              <div class="services-recruiting__image-tile"></div>
             </div>
           </div>
         </div>
@@ -248,7 +248,7 @@ get_header('', ["headerClasses" => "header--dark"]);
 				?>
 				</picture>
 				<?php } ?>
-              <div class="services-recruiting__image-tile"><span data-aos="fade-in" data-aos-delay="50"></span><span data-aos="fade-in" data-aos-delay="100"></span><span data-aos="fade-in" data-aos-delay="150"></span><span data-aos="fade-in" data-aos-delay="250"></span><span data-aos="fade-in" data-aos-delay="300"></span><span data-aos="fade-in" data-aos-delay="350"></span></div>
+              <div class="services-recruiting__image-tile"></div>
             </div>
           </div>
         </div>
@@ -280,7 +280,7 @@ get_header('', ["headerClasses" => "header--dark"]);
 				?>
 				</picture>
 				<?php } ?>
-              <div class="services-recruiting__image-tile"><span data-aos="fade-in" data-aos-delay="50"></span><span data-aos="fade-in" data-aos-delay="100"></span><span data-aos="fade-in" data-aos-delay="150"></span><span data-aos="fade-in" data-aos-delay="250"></span><span data-aos="fade-in" data-aos-delay="300"></span><span data-aos="fade-in" data-aos-delay="350"></span></div>
+              <div class="services-recruiting__image-tile"></div>
             </div>
           </div>
         </div>
@@ -313,7 +313,7 @@ get_header('', ["headerClasses" => "header--dark"]);
 				<?php foreach($gallery as $gal) { ?>
 				  <div class="services-find__images-item">
 				  <div class="services-find__images-picture" data-aos="zoom-in" data-aos-delay="500">
-				  <img src="<?php echo $gal['url']; ?>" alt="">
+				  <img src="<?php echo $gal['url']; ?>" alt="<?php echo $gal['alt']; ?>">
 				  </div>
 				  </div>
 				<?php } ?>

@@ -6549,7 +6549,7 @@ textarea.input {
     background: #e0e5e4;
     padding: 0 2.375vw 3vw 2.375vw
   }
-  .services-business__title:before {
+  /* .services-business__title:before {
     content: "";
     display: block;
     width: 80px;
@@ -6558,7 +6558,7 @@ textarea.input {
     position: absolute;
     right: 100%;
     top: 100%
-  }
+  } */
   .services-business__title .h3 {
     letter-spacing: .2px
   }
@@ -6591,11 +6591,11 @@ textarea.input {
     padding-left: 0;
     padding-right: 2.375vw
   }
-  .services-business__container--left .services-business__title:before {
+  /* .services-business__container--left .services-business__title:before {
     right: unset;
     left: 100%;
     background: #f4f2f0
-  }
+  } */
   .services-business__container--left .services-business__description {
     margin-left: auto;
     padding: 2.5vw 0 0 3.4375vw
