@@ -21,12 +21,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
     slideToggleArticle();
 
     document.body.classList.remove('preload');
-    AOS.init({
-        once: true,
-        duration: 1000,
-        startEvent: 'load',
-        offset: 20
-    });
+    if (typeof AOS !== 'undefined' && AOS && typeof AOS.init === 'function') {
+        AOS.init({
+            once: true,
+            duration: 1000,
+            startEvent: 'load',
+            offset: 20
+        });
+    }
 });
 
 const fixedHeader = () => {
