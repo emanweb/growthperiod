@@ -28,7 +28,7 @@ get_header('', ["headerClasses" => "header--dark"]);
 				?>
 				</picture>
 				<?php } ?>
-              <div class="services-intro__image-tile"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+              <div class="services-intro__image-tile"></div>
             </div>
           </div>
         </div>
