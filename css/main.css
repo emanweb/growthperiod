@@ -7355,7 +7355,7 @@ textarea.input {
     background: #e0e5e4;
     padding: 1.0625vw 2.125vw 1.875vw 1.875vw
   }
-  .industries-infoblock__title:before {
+  /* .industries-infoblock__title:before {
     content: "";
     display: block;
     width: 80px;
@@ -7364,7 +7364,7 @@ textarea.input {
     position: absolute;
     right: 100%;
     top: 100%
-  }
+  } */
   .industries-infoblock__title .h3 {
     letter-spacing: .2px
   }
