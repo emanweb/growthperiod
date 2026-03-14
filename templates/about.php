@@ -87,6 +87,7 @@ get_header('', ["headerClasses" => "header--dark"]);
 		  <img src="<?php echo get_template_directory_uri(); ?>/images/arrows-right-2.svg" alt=""></div>
           <div class="about-sets-us-apart__header" data-aos="fade-in">
             <div class="about-sets-us-apart__header-title">
+              <div class="about-sets-us-apart__eyebrow">what sets us apart</div>
               <h2 class="h2"><?php echo get_sub_field('title'); ?></h2>
             </div>
             <div class="about-sets-us-apart__header-image" data-aos="fade-in">
@@ -108,16 +109,26 @@ get_header('', ["headerClasses" => "header--dark"]);
           </div>
         </div>
         <div class="container about-sets-us-apart__container about-sets-us-apart__list-container">
-          <div class="about-sets-us-apart__list">
-			<?php if( have_rows('what_sets_us_apart_list')): while( have_rows('what_sets_us_apart_list') ) : the_row(); ?>
-            <div class="about-sets-us-apart__list-item">
+          <div class="about-sets-us-apart__list" role="list">
+			<?php
+            if( have_rows('what_sets_us_apart_list')):
+              $apart_index = 1;
+              while( have_rows('what_sets_us_apart_list') ) : the_row();
+                $is_active = $apart_index === 1;
+            ?>
+            <article class="about-sets-us-apart__list-item<?php echo $is_active ? ' is-active' : ''; ?>" role="listitem" tabindex="0" data-apart-index="<?php echo $apart_index; ?>">
               <div class="about-sets-us-apart__list-content" data-aos="fade-in">
-                <div class="about-sets-us-apart__list-title"><?php echo get_sub_field('title'); ?></div>
+                <div class="about-sets-us-apart__list-index"><?php echo sprintf('%02d', $apart_index); ?></div>
+                <h3 class="about-sets-us-apart__list-title"><?php echo get_sub_field('title'); ?></h3>
                 <div class="about-sets-us-apart__list-description"><?php echo get_sub_field('description'); ?></div>
               </div>
-            </div>
-			<?php endwhile; endif; ?>
-           </div>
+            </article>
+			<?php
+                $apart_index++;
+              endwhile;
+            endif;
+            ?>
+          </div>
           <div class="about-sets-us-apart__light"></div>
         </div>
       </section>
