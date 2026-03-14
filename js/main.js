@@ -809,46 +809,48 @@ const teamSliders = () => {
     let sliderFirst = document.querySelector('.about-team__slider--first'),
         sliderSecond = document.querySelector('.about-team__slider--second');
 
-    if(sliderFirst) {
-        imagesLoaded(sliderFirst, function () {
-            let slider1 = new Swiper(sliderFirst, {
-                loop: true,
-                spaceBetween: 10,
-                slidesPerView: 'auto',
-                direction: 'vertical',
-                autoplay: {
-                    delay: 1
-                },
-                freeMode: true,
-                speed: 20000,
-                allowTouchMove: false,
-                breakpoints: {
-                    1200: {
-                        spaceBetween: 30
-                    }
-                }
-            });
-        })
+    const initTeamSlider = (sliderElement) => {
+        if (!sliderElement) {
+            return;
+        }
 
-        imagesLoaded(sliderSecond, function () {
-            let slider2 = new Swiper(sliderSecond, {
-                loop: true,
-                spaceBetween: 10,
-                slidesPerView: 'auto',
-                direction: 'vertical',
-                autoplay: {
-                    delay: 1
-                },
-                freeMode: true,
-                speed: 20000,
-                allowTouchMove: false,
-                breakpoints: {
-                    1200: {
-                        spaceBetween: 30
-                    }
+        new Swiper(sliderElement, {
+            loop: true,
+            spaceBetween: 10,
+            slidesPerView: 'auto',
+            direction: 'vertical',
+            autoplay: {
+                delay: 1
+            },
+            freeMode: true,
+            speed: 20000,
+            allowTouchMove: false,
+            breakpoints: {
+                1200: {
+                    spaceBetween: 30
                 }
+            }
+        });
+    };
+
+    const runWhenImagesReady = (sliderElement) => {
+        if (!sliderElement) {
+            return;
+        }
+
+        if (typeof imagesLoaded === 'function') {
+            imagesLoaded(sliderElement, function () {
+                initTeamSlider(sliderElement);
             });
-        })
+            return;
+        }
+
+        initTeamSlider(sliderElement);
+    };
+
+    if(sliderFirst) {
+        runWhenImagesReady(sliderFirst);
+        runWhenImagesReady(sliderSecond);
     }
 }
 
