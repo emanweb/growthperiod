@@ -313,9 +313,18 @@ const scrollCases = () => {
 }
 
 const typeCaptions = () => {
+    const typeElements = document.querySelectorAll('.js-type');
+
+    if (typeof appear !== 'function') {
+        typeElements.forEach((el) => {
+            el.classList.add('is-appear');
+        });
+        return;
+    }
+
     appear({
         elements: function elements(){
-            return document.querySelectorAll('.js-type')
+            return typeElements
         },
         appear: function appear(el){
             el.classList.add('is-appear')
