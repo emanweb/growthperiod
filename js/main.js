@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     loadMore();
     experienceSlider();
     popups();
+    apartGalleryPopup();
     teamFilter();
     hoverAparts();
     smoothScroll();
@@ -580,6 +581,34 @@ const popups = () => {
             popupHide(document.querySelector('.popup.is-active'));
         }
     }, false);
+}
+
+const apartGalleryPopup = () => {
+    const galleryItems = document.querySelectorAll('.js-apart-gallery-item');
+    const galleryPopup = document.querySelector('#apartGalleryPopup');
+
+    if (!galleryItems.length || !galleryPopup) {
+        return;
+    }
+
+    const popupImage = galleryPopup.querySelector('.about-sets-us-apart__popup-image');
+    if (!popupImage) {
+        return;
+    }
+
+    galleryItems.forEach((galleryItem) => {
+        galleryItem.addEventListener('click', () => {
+            const fullImage = galleryItem.getAttribute('data-image');
+            const fullImageAlt = galleryItem.getAttribute('data-image-alt') || '';
+
+            if (!fullImage) {
+                return;
+            }
+
+            popupImage.setAttribute('src', fullImage);
+            popupImage.setAttribute('alt', fullImageAlt);
+        }, false);
+    });
 }
 
 const popupVideo = (video) => {

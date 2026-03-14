@@ -87,19 +87,35 @@ get_header('', ["headerClasses" => "header--dark"]);
 		  <img src="<?php echo get_template_directory_uri(); ?>/images/arrows-right-2.svg" alt=""></div>
           <div class="about-sets-us-apart__header" data-aos="fade-in">
             <div class="about-sets-us-apart__header-title">
-              <div class="about-sets-us-apart__eyebrow">what sets us apart</div>
+              <div class="about-sets-us-apart__eyebrow">growthperiod</div>
               <h2 class="h2"><?php echo get_sub_field('title'); ?></h2>
             </div>
             <div class="about-sets-us-apart__header-image" data-aos="fade-in">
               <div class="about-sets-us-apart__header-image-container">
                 <?php
-				if(!empty(get_sub_field('image'))){ ?>
-				<picture>
-				<?php
-					echo getImageHTMLCodeWebp( get_sub_field('image'), 'full', ['class' => ''] );
-				?>
-				</picture>
-				<?php } ?>
+        $apart_gallery = get_sub_field('gallery');
+        if(!empty($apart_gallery)){ ?>
+        <div class="about-sets-us-apart__mosaic">
+          <?php foreach($apart_gallery as $apart_gallery_item) {
+            $apart_image_full = !empty($apart_gallery_item['url']) ? $apart_gallery_item['url'] : '';
+            $apart_image_alt = !empty($apart_gallery_item['alt']) ? $apart_gallery_item['alt'] : '';
+            $apart_image_thumb = !empty($apart_gallery_item['sizes']['large']) ? $apart_gallery_item['sizes']['large'] : $apart_image_full;
+            if(empty($apart_image_full)) {
+              continue;
+            }
+          ?>
+          <a href="<?php echo esc_url($apart_image_full); ?>" class="about-sets-us-apart__mosaic-item popup-link js-apart-gallery-item" data-popup="#apartGalleryPopup" data-image="<?php echo esc_url($apart_image_full); ?>" data-image-alt="<?php echo esc_attr($apart_image_alt); ?>" aria-label="View image">
+            <img src="<?php echo esc_url($apart_image_thumb); ?>" alt="<?php echo esc_attr($apart_image_alt); ?>" loading="lazy"/>
+          </a>
+          <?php } ?>
+        </div>
+        <?php } elseif(!empty(get_sub_field('image'))){ ?>
+        <picture>
+        <?php
+          echo getImageHTMLCodeWebp( get_sub_field('image'), 'full', ['class' => ''] );
+        ?>
+        </picture>
+        <?php } ?>
 				<?php
 				if(get_sub_field('show_tile')[0]  == 'yes'){ ?>
                 <div class="about-sets-us-apart__header-tile"><span></span><span></span><span></span><span></span><span></span><span></span></div>
@@ -130,6 +146,18 @@ get_header('', ["headerClasses" => "header--dark"]);
             ?>
           </div>
           <div class="about-sets-us-apart__light"></div>
+        </div>
+        <div class="popup popup--apart-gallery" id="apartGalleryPopup">
+          <div class="popup__container">
+            <div class="popup__close">
+              <svg class="icon" width="30" height="30" viewBox="0 0 30 30">
+                <use xlink:href="<?php echo get_template_directory_uri(); ?>/images/sprites/main.stack.svg#image-close"></use>
+              </svg>
+            </div>
+            <div class="popup__content about-sets-us-apart__popup-content">
+              <img src="" alt="" class="about-sets-us-apart__popup-image"/>
+            </div>
+          </div>
         </div>
       </section>
 	  <?php endwhile; endif; ?>
