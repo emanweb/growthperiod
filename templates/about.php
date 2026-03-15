@@ -83,8 +83,6 @@ get_header('', ["headerClasses" => "header--dark"]);
 	  <?php if( have_rows('what_sets_us_apart')): while( have_rows('what_sets_us_apart') ) : the_row(); ?>
       <section class="about-sets-us-apart" id="whatSetsUsApart">
         <div class="container about-sets-us-apart__container">
-          <div class="about-sets-us-apart__arrows" data-aos="fade-in" data-aos-duration="3000" data-aos-delay="2000">
-		  <img src="<?php echo get_template_directory_uri(); ?>/images/arrows-right-2.svg" alt=""></div>
           <div class="about-sets-us-apart__header" data-aos="fade-in">
             <div class="about-sets-us-apart__header-title">
               <div class="about-sets-us-apart__eyebrow">growthperiod</div>
@@ -99,18 +97,38 @@ get_header('', ["headerClasses" => "header--dark"]);
               }
               if(!empty($apart_gallery)){ ?>
         <div class="about-sets-us-apart__mosaic">
-          <?php foreach($apart_gallery as $apart_gallery_item) {
+          <?php
+          $apart_gallery_index = 0;
+          foreach($apart_gallery as $apart_gallery_item) {
             $apart_image_full = !empty($apart_gallery_item['url']) ? $apart_gallery_item['url'] : '';
             $apart_image_alt = !empty($apart_gallery_item['alt']) ? $apart_gallery_item['alt'] : '';
             $apart_image_thumb = !empty($apart_gallery_item['sizes']['large']) ? $apart_gallery_item['sizes']['large'] : $apart_image_full;
+            $apart_image_width = !empty($apart_gallery_item['width']) ? (int) $apart_gallery_item['width'] : 0;
+            $apart_image_height = !empty($apart_gallery_item['height']) ? (int) $apart_gallery_item['height'] : 0;
+            $apart_image_ratio = $apart_image_height > 0 ? ($apart_image_width / $apart_image_height) : 1;
+
+            $apart_item_type_class = 'is-square';
+            if($apart_image_ratio >= 1.2) {
+              $apart_item_type_class = 'is-landscape';
+            } elseif($apart_image_ratio <= 0.84) {
+              $apart_item_type_class = 'is-portrait';
+            }
+
+            $apart_item_classes = 'about-sets-us-apart__mosaic-item popup-link js-apart-gallery-item ' . $apart_item_type_class;
+            if($apart_gallery_index === 0) {
+              $apart_item_classes .= ' is-featured';
+            }
+
             if(empty($apart_image_full)) {
               continue;
             }
           ?>
-          <a href="<?php echo esc_url($apart_image_full); ?>" class="about-sets-us-apart__mosaic-item popup-link js-apart-gallery-item" data-popup="#apartGalleryPopup" data-image="<?php echo esc_url($apart_image_full); ?>" data-image-alt="<?php echo esc_attr($apart_image_alt); ?>" aria-label="View image">
+          <a href="<?php echo esc_url($apart_image_full); ?>" class="<?php echo esc_attr($apart_item_classes); ?>" data-popup="#apartGalleryPopup" data-image="<?php echo esc_url($apart_image_full); ?>" data-image-alt="<?php echo esc_attr($apart_image_alt); ?>" aria-label="View image">
             <img src="<?php echo esc_url($apart_image_thumb); ?>" alt="<?php echo esc_attr($apart_image_alt); ?>" loading="lazy"/>
           </a>
-          <?php } ?>
+          <?php
+            $apart_gallery_index++;
+          } ?>
         </div>
         <?php } elseif(!empty(get_sub_field('image'))){ ?>
         <picture>

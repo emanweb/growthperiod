@@ -5382,14 +5382,7 @@ textarea.input {
   background: linear-gradient(180deg,#f4f2f0 0,#eef3ec 42%,#f4f2f0 100%)
 }
 .about-sets-us-apart__arrows {
-  position: absolute;
-  margin-top: -42px;
-  width: min(44vw,660px);
-  left: -10px;
-  top: 34px;
-  opacity: .3;
-  pointer-events: none;
-  z-index: 0
+  display: none
 }
 .about-sets-us-apart__arrows img {
   display: block;
@@ -5421,9 +5414,10 @@ textarea.input {
 }
 .about-sets-us-apart__header-image-container {
   position: relative;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 24px 42px rgba(9,21,14,.24);
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: none;
+  background: transparent;
   width: 100%
 }
 .about-sets-us-apart__header-image img {
@@ -5436,15 +5430,16 @@ textarea.input {
 .about-sets-us-apart__mosaic {
   display: grid;
   grid-template-columns: repeat(4,minmax(0,1fr));
-  gap: 8px;
-  grid-auto-rows: clamp(72px,11vw,120px)
+  gap: 6px;
+  grid-auto-flow: dense;
+  grid-auto-rows: clamp(68px,16vw,94px)
 }
 .about-sets-us-apart__mosaic-item {
   display: block;
   position: relative;
   overflow: hidden;
-  border-radius: 10px;
-  background: #d8d8d8;
+  border-radius: 0;
+  background: transparent;
   cursor: zoom-in
 }
 .about-sets-us-apart__mosaic-item img {
@@ -5452,24 +5447,26 @@ textarea.input {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform .35s ease,filter .35s ease
+  transition: transform .25s ease
 }
 .about-sets-us-apart__mosaic-item:hover img {
-  transform: scale(1.05);
-  filter: saturate(1.1)
+  transform: scale(1.02)
 }
-.about-sets-us-apart__mosaic-item:nth-child(1) {
+.about-sets-us-apart__mosaic-item.is-square {
+  grid-column: span 1;
+  grid-row: span 1
+}
+.about-sets-us-apart__mosaic-item.is-landscape {
+  grid-column: span 2;
+  grid-row: span 1
+}
+.about-sets-us-apart__mosaic-item.is-portrait {
+  grid-column: span 1;
+  grid-row: span 2
+}
+.about-sets-us-apart__mosaic-item.is-featured {
   grid-column: span 2;
   grid-row: span 2
-}
-.about-sets-us-apart__mosaic-item:nth-child(4) {
-  grid-column: span 2
-}
-.about-sets-us-apart__mosaic-item:nth-child(5) {
-  grid-row: span 2
-}
-.about-sets-us-apart__mosaic-item:nth-child(8) {
-  grid-column: span 2
 }
 .about-sets-us-apart__header-tile {
   position: absolute;
@@ -5604,14 +5601,25 @@ textarea.input {
     margin-right: 0
   }
   .about-sets-us-apart__mosaic {
-    gap: 10px;
-    grid-auto-rows: clamp(80px,7.6vw,130px)
+    grid-template-columns: repeat(8,minmax(0,1fr));
+    gap: 8px;
+    grid-auto-rows: clamp(42px,4.4vw,78px)
   }
-  .about-sets-us-apart__arrows {
-    left: auto;
-    right: -7vw;
-    top: 10px;
-    width: min(46vw,720px)
+  .about-sets-us-apart__mosaic-item.is-square {
+    grid-column: span 2;
+    grid-row: span 2
+  }
+  .about-sets-us-apart__mosaic-item.is-landscape {
+    grid-column: span 4;
+    grid-row: span 2
+  }
+  .about-sets-us-apart__mosaic-item.is-portrait {
+    grid-column: span 2;
+    grid-row: span 4
+  }
+  .about-sets-us-apart__mosaic-item.is-featured {
+    grid-column: span 4;
+    grid-row: span 4
   }
   .about-sets-us-apart__list {
     grid-template-columns: repeat(2,minmax(0,1fr));
