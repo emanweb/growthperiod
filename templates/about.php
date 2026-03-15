@@ -93,7 +93,7 @@ get_header('', ["headerClasses" => "header--dark"]);
             <div class="about-sets-us-apart__header-image" data-aos="fade-in">
               <div class="about-sets-us-apart__header-image-container">
                 <?php
-        $apart_gallery = get_sub_field('gallery');
+        $apart_gallery = get_sub_field('images');
         if(!empty($apart_gallery)){ ?>
         <div class="about-sets-us-apart__mosaic">
           <?php foreach($apart_gallery as $apart_gallery_item) {
