@@ -5526,6 +5526,7 @@ textarea.input {
 }
 .about-sets-us-apart__list-item {
   margin-bottom: 0;
+  padding-top: 0!important;
   transition: transform .35s ease;
   cursor: pointer;
   outline: 0;
