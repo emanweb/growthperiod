@@ -5378,7 +5378,7 @@ textarea.input {
   padding-top: 56px;
   padding-bottom: 56px;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   background: linear-gradient(180deg,#f4f2f0 0,#eef3ec 42%,#f4f2f0 100%)
 }
 .about-sets-us-apart__arrows {
@@ -5636,6 +5636,9 @@ textarea.input {
   }
 }
 @media (min-width:64em) {
+  .about-sets-us-apart {
+    padding-bottom: clamp(96px,9vw,160px)
+  }
   .about-sets-us-apart__list {
     grid-template-columns: repeat(3,minmax(0,1fr));
     gap: 16px
@@ -5647,6 +5650,9 @@ textarea.input {
   .about-sets-us-apart__list-item:hover {
     transform: translateY(-4px)
   }
+}
+.about-team {
+  clear: both
 }
 @media (min-width:81.25em) {
   .about-sets-us-apart__container {

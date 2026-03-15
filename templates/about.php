@@ -118,7 +118,7 @@ get_header('', ["headerClasses" => "header--dark"]);
         <?php } ?>
 				<?php
 				if(get_sub_field('show_tile')[0]  == 'yes'){ ?>
-                <div class="about-sets-us-apart__header-tile"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                <div class="about-sets-us-apart__header-tile"></div>
 				<?php } ?>
               </div>
             </div>

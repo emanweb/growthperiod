@@ -773,6 +773,7 @@ const hoverAparts = () => {
     }
 }
 
+
 const smoothScroll = () => {
     document.addEventListener('click', (e) => {
         let _target = e.target;
