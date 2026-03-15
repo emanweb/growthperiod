@@ -5524,7 +5524,7 @@ textarea.input {
 }
 .about-sets-us-apart__list {
   display: grid;
-  gap: 16px
+  gap: 12px
 }
 .about-sets-us-apart__list-item {
   margin-bottom: 0;
@@ -5546,7 +5546,7 @@ textarea.input {
 }
 .about-sets-us-apart__list-content {
   padding: 20px 20px 22px;
-  border-radius: 14px;
+  border-radius: 0;
   border: 1px solid var(--apart-border);
   background: var(--apart-surface);
   backdrop-filter: blur(4px);
@@ -5558,7 +5558,7 @@ textarea.input {
   display: inline-block;
   min-width: 44px;
   border-radius: 999px;
-  border: 1px solid rgba(49,171,74,.45);
+  border: 0;
   color: #1f8f37;
   font-size: 11px;
   font-weight: 700;
@@ -5571,7 +5571,7 @@ textarea.input {
 }
 .about-sets-us-apart__list-title {
   margin: 0 0 12px;
-  font-size: clamp(1.9rem,2.6vw,3rem);
+  font-size: clamp(1.7rem,2.2vw,2.5rem);
   line-height: 1.1;
   color: var(--apart-green-strong)
 }
@@ -5614,10 +5614,10 @@ textarea.input {
   }
   .about-sets-us-apart__list {
     grid-template-columns: repeat(2,minmax(0,1fr));
-    gap: 18px
+    gap: 14px
   }
   .about-sets-us-apart__list-content {
-    min-height: 300px
+    min-height: 0
   }
   .about-sets-us-apart__light {
     width: 22vw;
@@ -5638,7 +5638,7 @@ textarea.input {
 @media (min-width:64em) {
   .about-sets-us-apart__list {
     grid-template-columns: repeat(3,minmax(0,1fr));
-    gap: 22px
+    gap: 16px
   }
   .about-sets-us-apart__list-item:hover .about-sets-us-apart__list-content {
     border-color: rgba(49,171,74,.55);
