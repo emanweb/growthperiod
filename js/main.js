@@ -815,14 +815,25 @@ const teamSliders = () => {
     let sliderFirst = document.querySelector('.about-team__slider--first'),
         sliderSecond = document.querySelector('.about-team__slider--second');
 
-    const initTeamSlider = (sliderElement) => {
+    const initTeamSlider = (sliderElement, attempt = 0) => {
         if (!sliderElement) {
             return;
         }
 
         if (typeof Swiper !== 'function') {
+            if (attempt < 20) {
+                setTimeout(() => {
+                    initTeamSlider(sliderElement, attempt + 1);
+                }, 150);
+            }
             return;
         }
+
+        if (sliderElement.dataset.teamSliderInitialized === '1') {
+            return;
+        }
+
+        sliderElement.dataset.teamSliderInitialized = '1';
 
         new Swiper(sliderElement, {
             loop: true,
