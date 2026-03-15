@@ -28,6 +28,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
             startEvent: 'load',
             offset: 20
         });
+    } else {
+        document.querySelectorAll('[data-aos]').forEach((element) => {
+            element.classList.add('aos-animate');
+        });
     }
 });
 
