@@ -93,8 +93,11 @@ get_header('', ["headerClasses" => "header--dark"]);
             <div class="about-sets-us-apart__header-image" data-aos="fade-in">
               <div class="about-sets-us-apart__header-image-container">
                 <?php
-        $apart_gallery = get_sub_field('images');
-        if(!empty($apart_gallery)){ ?>
+              $apart_gallery = get_sub_field('gallery');
+              if(empty($apart_gallery)) {
+                $apart_gallery = get_sub_field('images');
+              }
+              if(!empty($apart_gallery)){ ?>
         <div class="about-sets-us-apart__mosaic">
           <?php foreach($apart_gallery as $apart_gallery_item) {
             $apart_image_full = !empty($apart_gallery_item['url']) ? $apart_gallery_item['url'] : '';
@@ -116,10 +119,17 @@ get_header('', ["headerClasses" => "header--dark"]);
         ?>
         </picture>
         <?php } ?>
-				<?php
-				if(get_sub_field('show_tile')[0]  == 'yes'){ ?>
+        <?php
+        $show_tile = get_sub_field('show_tile');
+        $show_tile_enabled = false;
+        if (is_array($show_tile)) {
+          $show_tile_enabled = in_array('yes', $show_tile, true);
+        } elseif (is_string($show_tile)) {
+          $show_tile_enabled = $show_tile === 'yes';
+        }
+        if($show_tile_enabled){ ?>
                 <div class="about-sets-us-apart__header-tile"></div>
-				<?php } ?>
+        <?php } ?>
               </div>
             </div>
           </div>
