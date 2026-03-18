@@ -144,7 +144,25 @@ function growthperiod_scripts() {
 	//wp_enqueue_script('jquery');
 	//https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js
 	wp_enqueue_script( 'growthperiod-jquery-js', 'https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js', array(), _S_VERSION, true );
-	wp_enqueue_script( 'growthperiod-main-js', get_template_directory_uri() . '/js/main.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'growthperiod-appear-js', get_template_directory_uri() . '/js/appear.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'growthperiod-aos-js', get_template_directory_uri() . '/js/aos.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'growthperiod-swiper-js', get_template_directory_uri() . '/js/swiper-bundle.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'growthperiod-splide-js', get_template_directory_uri() . '/js/splide.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'growthperiod-splide-auto-scroll-js', get_template_directory_uri() . '/js/splide-extension-auto-scroll.min.js', array('growthperiod-splide-js'), _S_VERSION, true );
+	wp_enqueue_script( 'growthperiod-imagesloaded-js', get_template_directory_uri() . '/js/imagesloaded.pkgd.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'growthperiod-vimeo-player-js', get_template_directory_uri() . '/js/player.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'growthperiod-readmore-js', get_template_directory_uri() . '/js/readmore.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'growthperiod-simplebar-js', get_template_directory_uri() . '/js/simplebar.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'growthperiod-main-js', get_template_directory_uri() . '/js/main.min.js', array(
+		'growthperiod-appear-js',
+		'growthperiod-aos-js',
+		'growthperiod-swiper-js',
+		'growthperiod-splide-auto-scroll-js',
+		'growthperiod-imagesloaded-js',
+		'growthperiod-vimeo-player-js',
+		'growthperiod-readmore-js',
+		'growthperiod-simplebar-js'
+	), _S_VERSION, true );
 	/* if(is_page(10) || is_page(12) || is_category()){
 	    wp_enqueue_script( 'growthperiod-custom_main-js', get_template_directory_uri() . '/js/custom_main.js', array(), _S_VERSION, true );
 	} */
