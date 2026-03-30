@@ -2766,14 +2766,14 @@ body {
 }
 @media (min-width:64em) {
   .container {
-    padding-left: 7%;
-    padding-right: 7%
+    padding-left: 3%;
+    padding-right: 3%
   }
 }
 @media (min-width:81.25em) {
   .container {
-    padding-left: 14.1875%;
-    padding-right: 14.1875%
+    padding-left: 7.1875%;
+    padding-right: 7.1875%
   }
 }
 a {
@@ -5059,9 +5059,9 @@ textarea.input {
     padding-right: 0
   }
   .about-intro__content {
-    -webkit-flex: 35.8% 0 0;
-    -ms-flex: 35.8% 0 0px;
-    flex: 35.8% 0 0;
+    -webkit-flex: 45.8% 0 0;
+    -ms-flex: 45.8% 0 0px;
+    flex: 45.8% 0 0;
     padding-top: 6.2vw;
     margin-bottom: 0
   }
