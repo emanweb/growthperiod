@@ -12,7 +12,7 @@ get_header('', ["headerClasses" => "header--dark"]);
             <h1 class="h3"><?php echo get_sub_field('title'); ?></h1>
             <div class="about-intro__menu">
 			  <?php if( have_rows('links')): while( have_rows('links') ) : the_row(); ?>
-              <?php if(!empty(get_sub_field('link'))) { ?><div class="about-intro__menu-item"><a href="<?php echo get_sub_field('link')['url']; ?>" data-smooth-scroll="<?php echo get_sub_field('link')['url']; ?>"><?php echo get_sub_field('link')['title']; ?></a></div><?php } ?>
+              <?php if(!empty(get_sub_field('link'))) { ?><div class="about-intro__menu-item"><a class="about-intro__menu-link" href="<?php echo get_sub_field('link')['url']; ?>" data-smooth-scroll="<?php echo get_sub_field('link')['url']; ?>"><?php echo get_sub_field('link')['title']; ?></a></div><?php } ?>
 			  <?php endwhile; endif; ?>
             </div>
             <div class="about-intro__light"></div>

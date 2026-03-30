@@ -31,3 +31,41 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	max-width: 100%;
 	height: auto;
 }
+/* Custom styles for the about page "What sets us apart" section */
+.container.about-sets-us-apart__container.about-sets-us-apart__list-container
+ {
+    padding: 0;
+}
+
+/* Custom styles for About intro menu links */
+.about-intro__menu .about-intro__menu-link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 12px 18px;
+	border-radius: 999px;
+	font-size: 15px;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	line-height: 1.1;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #ffffff;
+	background: linear-gradient(135deg, #3ab14a 0%, #2d8b3a 100%);
+	box-shadow: 0 10px 22px rgba(58, 177, 74, 0.24);
+	transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.about-intro__menu .about-intro__menu-link:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 14px 28px rgba(58, 177, 74, 0.3);
+	background: linear-gradient(135deg, #44bf55 0%, #2f9440 100%);
+	color: #ffffff;
+}
+
+@media (min-width: 48em) {
+	.about-intro__menu .about-intro__menu-link {
+		padding: 14px 22px;
+		font-size: 16px;
+	}
+}
