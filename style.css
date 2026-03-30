@@ -95,3 +95,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	}
 }
 
+div#experienceAlphabet span {
+    font-size: 1.2em;
+}
+
