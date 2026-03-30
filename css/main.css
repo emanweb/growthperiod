@@ -512,7 +512,7 @@ template {
 }
 @media (min-width:48em) and (min-width:1600px) {
   .intro__content .h2 {
-    font-size: 60px
+    font-size: 52px
   }
 }
 [data-aos][data-aos][data-aos-duration="50"],
