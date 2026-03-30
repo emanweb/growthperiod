@@ -490,29 +490,29 @@ template {
 }
 @media (min-width:320px) {
   .intro__content .h2 {
-    font-size: calc(.0134228188 * 100vw + 13.7046979866px)
+    font-size: calc(.0134228188 * 100vw + 16.7046979866px)
   }
 }
 @media (min-width:767px) {
   .intro__content .h2 {
-    font-size: 24px
+    font-size: 28x
   }
 }
 @media (min-width:48em) {
   .intro__content .h2 {
-    font-size: 24px;
+    font-size: 32px;
     max-width: calc(375px + 5vw);
     line-height: 120%
   }
 }
 @media (min-width:48em) and (min-width:768px) {
   .intro__content .h2 {
-    font-size: calc(.0192307692 * 100vw + 9.2307692308px)
+    font-size: calc(.0192307692 * 100vw + 15.2307692308px)
   }
 }
 @media (min-width:48em) and (min-width:1600px) {
   .intro__content .h2 {
-    font-size: 40px
+    font-size: 60px
   }
 }
 [data-aos][data-aos][data-aos-duration="50"],
