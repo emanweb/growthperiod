@@ -2847,7 +2847,7 @@ h3 {
 @media (min-width:320px) {
   .h3,
   h3 {
-    font-size: calc(.03125 * 100vw + 14px)
+    font-size: calc(.03125 * 100vw + 8px)
   }
 }
 @media (min-width:1600px) {
