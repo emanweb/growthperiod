@@ -73,11 +73,11 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	background: linear-gradient(135deg, #44bf55 0%, #2f9440 100%);
 	color: #ffffff;
 }
-/* Full tablet and desktop sizing for primary About intro links. */
-@media (min-width: 48em) {
+/* desktop sizing for primary About intro links. */
+@media (min-width: 64em) {
 	.about-intro__menu .about-intro__menu-link {
 		padding: 14px 22px;
-		font-size: 20px;
+		font-size: 32px;
 	}
 }
 
