@@ -9182,7 +9182,7 @@ textarea.input {
   flex-wrap: wrap
 }
 .team-experts__filter-item {
-  background: #3ab14a;
+  background: #19331c;
   padding: 5px 10px;
   color: #fff;
   margin: 0 5px 5px 0;
@@ -9201,7 +9201,7 @@ textarea.input {
   }
 }
 .team-experts__filter-item:hover {
-  background: #19331c
+  background: #1b5623
 }
 @media (min-width:48em) {
   .team-experts {
