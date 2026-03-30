@@ -22,22 +22,33 @@ Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 */
 
+/*
+ * Theme-specific overrides
+ * Keep these rules scoped and documented since this file is loaded globally.
+ */
+
+/* Hide duplicated news date labels in About page news cards. */
 .news__list-date {
 	display: none !important;
 }
-/* Custom styles for the about page header image */
+
+/* Ensure About history header image scales fluidly across breakpoints. */
 .about-description__header-image-img {
 	display: block;
 	max-width: 100%;
 	height: auto;
 }
-/* Custom styles for the about page "What sets us apart" section */
+
+/* Remove extra horizontal padding in the "What sets us apart" list container. */
 .container.about-sets-us-apart__container.about-sets-us-apart__list-container
  {
     padding: 0;
 }
 
-/* Custom styles for About intro menu links */
+/*
+ * About intro menu CTA links
+ * Creates a larger pill-style visual treatment for key in-page navigation.
+ */
 .about-intro__menu .about-intro__menu-link {
 	display: inline-flex;
 	align-items: center;
@@ -63,9 +74,19 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	color: #ffffff;
 }
 
+/* Slight size increase for larger mobile/small tablet layouts. */
+@media (min-width: 36em) {
+	.about-intro__menu .about-intro__menu-link {
+		padding: 10px 18px;
+		font-size: 28px;
+	}
+}
+
+/* Full tablet and desktop sizing for primary About intro links. */
 @media (min-width: 48em) {
 	.about-intro__menu .about-intro__menu-link {
 		padding: 14px 22px;
 		font-size: 32px;
 	}
 }
+
