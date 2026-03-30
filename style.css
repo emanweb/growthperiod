@@ -25,3 +25,9 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 .news__list-date {
 	display: none !important;
 }
+/* Custom styles for the about page header image */
+.about-description__header-image-img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}

@@ -40,7 +40,7 @@ get_header('', ["headerClasses" => "header--dark"]);
 				if(!empty(get_sub_field('image'))){ ?>
 				<picture>
 				<?php
-					echo getImageHTMLCodeWebp( get_sub_field('image'), 'full', ['class' => ''] );
+          echo getImageHTMLCodeWebp( get_sub_field('image'), 'full', ['class' => 'about-description__header-image-img'] );
 				?>
 				</picture>
 				<?php } ?>
