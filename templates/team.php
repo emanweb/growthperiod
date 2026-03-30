@@ -140,7 +140,11 @@ get_header('', ["headerClasses" => "header--dark"]);
 				'post_type' => 'our-experts',
 				'post_status' => 'publish',
 				'posts_per_page' => -1,
-				'orderby' => 'name', 
+				'meta_key' => 'last_name',
+				'orderby' => array(
+					'meta_value' => 'ASC',
+					'title' => 'ASC',
+				), 
 				'order' => 'ASC', 
 			);  
 			
@@ -157,7 +161,13 @@ get_header('', ["headerClasses" => "header--dark"]);
 			  $type_cats = wp_get_object_terms( $post->ID, 'types', array( 'fields' => 'ids' ) );
 			  if(!empty($type_cats)){
 			  ?>
-              <div class="team-experts__filter-item popup-link" data-popup="#popupAdvisor<?php echo $experts_listrepeat; ?>" data-filter="<?php echo implode(',', $type_cats); ?>"><?php echo get_the_title(); ?></div>
+			  <?php
+			  $expert_position = trim((string) get_field('position'));
+			  $expert_last_name = trim((string) get_field('last_name'));
+			  $expert_first_name = trim((string) get_field('first_name'));
+			  $expert_label = trim($expert_position . ' ' . $expert_last_name . ($expert_first_name !== '' ? ', ' . $expert_first_name : ''));
+			  ?>
+			  <div class="team-experts__filter-item popup-link" data-popup="#popupAdvisor<?php echo $experts_listrepeat; ?>" data-filter="<?php echo implode(',', $type_cats); ?>"><?php echo esc_html($expert_label); ?></div>
 			  
 			<?php 
 			  }
