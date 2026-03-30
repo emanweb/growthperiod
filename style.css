@@ -53,9 +53,9 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	padding: 12px 18px;
+	padding: 10px 16px;
 	border-radius: 999px;
-	font-size: 24x;
+	font-size: 16px;
 	font-weight: 700;
 	letter-spacing: 0.04em;
 	line-height: 1.1;
@@ -74,10 +74,24 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	color: #ffffff;
 }
 /* desktop sizing for primary About intro links. */
+@media (min-width: 48em) {
+	.about-intro__menu .about-intro__menu-link {
+		padding: 11px 18px;
+		font-size: 18px;
+	}
+}
+
 @media (min-width: 64em) {
 	.about-intro__menu .about-intro__menu-link {
+		padding: 12px 20px;
+		font-size: 20px;
+	}
+}
+
+@media (min-width: 81.25em) {
+	.about-intro__menu .about-intro__menu-link {
 		padding: 14px 22px;
-		font-size: 32px;
+		font-size: 22px;
 	}
 }
 
