@@ -34,7 +34,6 @@ get_header();
           <div class="about__description" data-aos="fade-in" data-aos-delay="300" data-aos-duration="2000">
             <?php echo get_sub_field('description'); ?>
           </div>
-          <div class="about__arrows"><img src="<?php echo get_template_directory_uri(); ?>/images/arrows.svg" alt="" data-aos="fade-in" data-aos-duration="2000"></div>
         </div>
       </section>
 	<?php endwhile; endif; ?>
@@ -133,9 +132,6 @@ get_header();
                 </svg>
               </div></a></div>
 			<?php } ?>
-        </div>
-        <div class="services__arrows" data-aos="fade-in" data-aos-transition="2000">
-          <div class="services__arrows-img"></div>
         </div>
       </section>
 	<?php endwhile; endif; ?>

@@ -192,7 +192,6 @@ get_header('', ["headerClasses" => "header--dark"]);
 
 	  <?php if( have_rows('geopolitical_risk_management')): while( have_rows('geopolitical_risk_management') ) : the_row(); ?>
       <section class="services-recruiting" id="geopolitical_risk_management">
-        <div class="services-recruiting__arrows" data-aos="fade-in" data-aos-duration="2000"><img src="<?php echo get_template_directory_uri(); ?>/images/arrows-right-2.svg" alt=""></div>
         <div class="container services-recruiting__container">
           <div class="services-recruiting__info" data-aos="fade-in">
             <h2 class="h3"><?php echo get_sub_field('title'); ?></h2>
@@ -225,7 +224,6 @@ get_header('', ["headerClasses" => "header--dark"]);
 		
 	  <?php if( have_rows('executive_recruiting')): while( have_rows('executive_recruiting') ) : the_row(); ?>
       <section class="services-recruiting" id="recruiting">
-        <div class="services-recruiting__arrows" data-aos="fade-in" data-aos-duration="2000"><img src="<?php echo get_template_directory_uri(); ?>/images/arrows-right-2.svg" alt=""></div>
         <div class="container services-recruiting__container">
           <div class="services-recruiting__info" data-aos="fade-in">
             <h2 class="h3"><?php echo get_sub_field('title'); ?></h2>
@@ -257,7 +255,6 @@ get_header('', ["headerClasses" => "header--dark"]);
 	  
 	  <?php if( have_rows('Canada_GW_Group')): while( have_rows('Canada_GW_Group') ) : the_row(); ?>
       <section class="services-recruiting" id="gwsupport">
-        <div class="services-recruiting__arrows" data-aos="fade-in" data-aos-duration="2000"><img src="<?php echo get_template_directory_uri(); ?>/images/arrows-right-2.svg" alt=""></div>
         <div class="container services-recruiting__container">
           <div class="services-recruiting__info" data-aos="fade-in">
             <h2 class="h3"><?php echo get_sub_field('title'); ?></h2>

@@ -408,7 +408,6 @@ get_header('', ["headerClasses" => "header--dark"]);
 	  <?php endwhile; endif; ?>
 	  <?php if( have_rows('giving_back')): while( have_rows('giving_back') ) : the_row(); ?>
       <section class="about-giving-back" id="givingBack">
-        <div class="about-giving-back__arrows" data-aos="fade-in"><img src="<?php echo get_template_directory_uri(); ?>/images/arrows-right-3.svg" alt=""></div>
         <div class="container about-giving-back__container">
           <h2 class="h2" data-aos="fade-in"><?php echo get_sub_field('title'); ?></h2>
           <div class="about-giving-back__block" data-aos="fade-in"><?php echo get_sub_field('description'); ?></div>
