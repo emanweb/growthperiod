@@ -11,7 +11,6 @@ get_header('', ["headerClasses" => "header--dark"]);
 ?>
 <main class="main">
       <section class="case-intro">
-        <div class="case-intro__arrows" data-aos="fade-in" data-aos-duration="2000"><img src="<?php echo get_template_directory_uri(); ?>/images/arrows-right-gradient-2.svg" alt=""></div>
         <div class="container case-intro__container">
           <div class="case-intro__info" data-aos="fade-in">
             <?php if(get_field('client_name')) { ?><div class="case-intro__info-client"><?php echo get_field('client_name'); ?></div><?php } ?>
@@ -34,7 +33,6 @@ get_header('', ["headerClasses" => "header--dark"]);
 	  if( have_rows('content_area') ): while( have_rows('content_area') ): the_row(); ?>
       <?php if( get_row_layout() == 'case_study_info_section' ): ?>
       <section class="case-info">
-        <div class="case-info__arrows"><img src="<?php echo get_template_directory_uri(); ?>/images/arrows-left-gradient.svg" alt=""></div>
         <div class="container case-info__container">
           <div class="case-info__list">
 			<?php if( have_rows('content_list') ): while( have_rows('content_list') ): the_row(); ?>

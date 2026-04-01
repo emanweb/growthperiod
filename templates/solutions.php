@@ -7,7 +7,6 @@ get_header('', ["headerClasses" => "header--dark"]);
 	<main class="main">
       <section class="solutions">
         <div class="solutions__light"></div>
-        <div class="solutions__arrows" data-aos="fade-in" data-aos-duration="2000"><img src="<?php echo get_template_directory_uri(); ?>/images/arrows-right-2.svg" alt=""></div>
         <div class="container">
           <div class="solutions__header" data-aos="fade-in">
             <h2 class="h3"><?php echo get_the_content(); ?></h2>
