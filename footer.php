@@ -35,7 +35,6 @@
                 <picture>
                   <img src="<?php echo get_sub_field('image')['url']; ?>" alt=""/>
                 </picture>
-                <div class="solution__image-tile"><span></span><span></span><span></span><span></span><span></span><span></span></div>
               </div>
               <?php } ?>
             </div>

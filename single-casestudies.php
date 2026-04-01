@@ -23,7 +23,6 @@ get_header('', ["headerClasses" => "header--dark"]);
 			if(get_post_thumbnail_id( get_the_ID())){ ?> 
 				<picture><img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>" alt="<?php the_title(); ?>"/></picture>
 			<?php } ?>
-            <div class="case-intro__image-tile"><span></span><span></span><span></span><span></span><span></span><span></span></div>
           </div>
         </div>
       </section>
