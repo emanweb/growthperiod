@@ -33,8 +33,11 @@ EOF
 DEFAULT_STAGING_SSH_HOST="20.163.8.61"
 DEFAULT_STAGING_SSH_USER="azureuser"
 DEFAULT_STAGING_THEME_PATH="/var/www/stage.growthperiod.com/htdocs/wp-content/themes/growthperiod"
-DEFAULT_STAGING_SSH_KEY="/Users/emanuelcosta/Desktop/SSH/WebServer20251021_key.pem"
-
+if [[ "$(uname -s)" == MINGW* || "$(uname -s)" == CYGWIN* || "$(uname -s)" == MSYS* ]]; then
+  DEFAULT_STAGING_SSH_KEY="$HOME/.ssh/id_ed25519"
+else
+  DEFAULT_STAGING_SSH_KEY="/Users/emanuelcosta/Desktop/SSH/WebServer20251021_key.pem"
+fi
 
 DRY_RUN=0
 COMMIT_REF=""
