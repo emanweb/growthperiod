@@ -138,7 +138,7 @@ get_header();
 	<?php if( have_rows('industries_we_work_with')): while( have_rows('industries_we_work_with') ) : the_row(); ?>
       <section class="industries">
         <div class="container industries__container">
-          <h2 class="h2 js-type"><span class="accent"><?php echo get_sub_field('title'); ?></h2>
+          <h2 class="h2 js-type"><?php echo get_sub_field('title'); ?></h2>
           <div class="industries__list">
 			<?php if( have_rows('industries_list')): while( have_rows('industries_list') ) : the_row(); ?>
 			<a class="industries__list-item" href="<?php echo get_sub_field('link')['url']; ?>" data-aos="fade-up">

@@ -338,7 +338,7 @@ get_header('', ["headerClasses" => "header--dark"]);
       <section class="about-insights" id="recentInsight">
         <div class="container about-insights__container">
           <div class="about-insights__header" data-aos="fade-in">
-            <h3 class="h2"><span class="accent"><?php echo get_sub_field('title'); ?></h3>
+            <h3 class="h2"><?php echo get_sub_field('title'); ?></h3>
           </div>
 		  <?php
 			$args = array(  
