@@ -34,7 +34,7 @@ DEFAULT_STAGING_SSH_HOST="20.163.8.61"
 DEFAULT_STAGING_SSH_USER="azureuser"
 DEFAULT_STAGING_THEME_PATH="/var/www/stage.growthperiod.com/htdocs/wp-content/themes/growthperiod"
 if [[ "$(uname -s)" == MINGW* || "$(uname -s)" == CYGWIN* || "$(uname -s)" == MSYS* ]]; then
-  DEFAULT_STAGING_SSH_KEY="$HOME/.ssh/id_ed25519"
+  DEFAULT_STAGING_SSH_KEY="$HOME/OneDrive/Desktop/WebServer20251021_key.pem"
 else
   DEFAULT_STAGING_SSH_KEY="/Users/emanuelcosta/Desktop/SSH/WebServer20251021_key.pem"
 fi
