@@ -99,3 +99,50 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 div#experienceAlphabet span {
     font-size: 1.3em;
 }
+
+/* Industries intro menu CTA links — mirrors .about-intro__menu-link */
+.industries-intro__menu .industries-intro__menu-link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px 16px;
+	border-radius: 999px;
+	font-size: 16px;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	line-height: 1.1;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #ffffff;
+	background: linear-gradient(135deg, #3ab14a 0%, #2d8b3a 100%);
+	box-shadow: 0 10px 22px rgba(58, 177, 74, 0.24);
+	transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.industries-intro__menu .industries-intro__menu-link:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 14px 28px rgba(58, 177, 74, 0.3);
+	background: linear-gradient(135deg, #44bf55 0%, #2f9440 100%);
+	color: #ffffff;
+}
+
+@media (min-width: 48em) {
+	.industries-intro__menu .industries-intro__menu-link {
+		padding: 11px 18px;
+		font-size: 18px;
+	}
+}
+
+@media (min-width: 64em) {
+	.industries-intro__menu .industries-intro__menu-link {
+		padding: 12px 20px;
+		font-size: 20px;
+	}
+}
+
+@media (min-width: 81.25em) {
+	.industries-intro__menu .industries-intro__menu-link {
+		padding: 14px 22px;
+		font-size: 22px;
+	}
+}

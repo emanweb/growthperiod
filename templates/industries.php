@@ -13,7 +13,7 @@ get_header('', ["headerClasses" => "header--dark"]);
             <div class="industries-intro__description" data-aos="fade-in" data-aos-delay="200"><?php echo get_sub_field('description'); ?></div>
             <div class="industries-intro__menu">
               <?php if( have_rows('links')): while( have_rows('links') ) : the_row(); ?>
-              <?php if(!empty(get_sub_field('link'))) { ?><div class="industries-intro__menu-item"><a href="<?php echo get_sub_field('link')['url']; ?>" data-smooth-scroll="<?php echo get_sub_field('link')['url']; ?>"><?php echo get_sub_field('link')['title']; ?></a></div><?php } ?>
+              <?php if(!empty(get_sub_field('link'))) { ?><div class="industries-intro__menu-item"><a class="industries-intro__menu-link" href="<?php echo get_sub_field('link')['url']; ?>" data-smooth-scroll="<?php echo get_sub_field('link')['url']; ?>"><?php echo get_sub_field('link')['title']; ?></a></div><?php } ?>
 			  <?php endwhile; endif; ?>
             </div>
             <div class="industries-intro__light"></div>
