@@ -7272,16 +7272,17 @@ textarea.input {
     align-items: flex-start
   }
   .industries-intro__content {
-    -webkit-flex: 40.4% 0 0;
-    -ms-flex: 40.4% 0 0px;
-    flex: 40.4% 0 0;
-    padding-top: 2.5vw;
+    -webkit-flex: 45.8% 0 0;
+    -ms-flex: 45.8% 0 0px;
+    flex: 45.8% 0 0;
+    padding-top: 6.2vw;
     margin-bottom: 0
   }
   .industries-intro__content .h3 {
     line-height: 128%;
     letter-spacing: .002em;
-    margin-bottom: 2.5vw
+    margin-right: -6vw;
+    margin-bottom: 3.1vw
   }
   .industries-intro__description {
     padding-right: 5%;
@@ -7300,6 +7301,9 @@ textarea.input {
   .industries-intro__light {
     width: 18.4375vw;
     height: 18.4375vw
+  }
+  .industries-intro__menu-item {
+    margin-bottom: .5em
   }
   .industries-intro__explore {
     font-size: 16px;
