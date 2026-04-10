@@ -3700,14 +3700,15 @@ textarea.input {
 }
 .contact-us {
   position: fixed;
-  left: 0;
+  right: 0;
+  left: auto;
   bottom: 20px;
   z-index: 90
 }
 .contact-us__link {
-  width: 84px;
-  height: 140px;
-  border-radius: 0 70px 70px 0;
+  width: 68px;
+  height: 68px;
+  border-radius: 12px 0 0 12px;
   background: #3ab14a;
   color: #fff;
   display: -webkit-flex;
@@ -3716,21 +3717,14 @@ textarea.input {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   cursor: pointer;
   transition: box-shadow .3s ease,background-color .3s ease
 }
 .contact-us__link-text {
-  -webkit-writing-mode: tb-rl;
-  -ms-writing-mode: tb-rl;
-  writing-mode: tb-rl;
-  -webkit-transform: rotate(-180deg);
-  transform: rotate(-180deg);
-  margin-right: 10px;
-  text-transform: uppercase;
-  font-size: 12px;
-  margin-left: 10px;
-  font-weight: 700;
-  pointer-events: none
+  display: none
 }
 .contact-us__link-icon {
   transition: -webkit-transform .3s ease;
@@ -3739,19 +3733,21 @@ textarea.input {
   pointer-events: none
 }
 .contact-us__link-icon .icon {
-  fill: currentColor
+  fill: none;
+  stroke: currentColor
 }
 .contact-us__link:hover {
   box-shadow: 0 0 50px rgba(5,10,6,.25);
   background: #19331c
 }
 .contact-us__link:hover .contact-us__link-icon {
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg)
+  -webkit-transform: scale(1.06);
+  transform: scale(1.06)
 }
 .contact-us__form {
   position: absolute;
-  left: 0;
+  right: 0;
+  left: auto;
   bottom: 0;
   width: calc(95vw - 60px);
   max-width: 600px;
@@ -3759,8 +3755,8 @@ textarea.input {
   color: #fff;
   transition: .35s ease;
   opacity: 0;
-  -webkit-transform: translateX(-100%);
-  transform: translateX(-100%);
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
   pointer-events: none
 }
 .contact-us__form.is-active {
@@ -3773,16 +3769,17 @@ textarea.input {
   max-height: 95vh;
   overflow: auto;
   background: #3ab14a;
-  border-radius: 0 50px 0 0;
+  border-radius: 50px 0 0 0;
   padding: 40px 20px 6.3vw
 }
 .contact-us__form-close {
   position: absolute;
-  left: 100%;
+  right: 100%;
+  left: auto;
   bottom: 0;
   width: 100px;
   height: 172px;
-  border-radius: 0 100px 100px 0;
+  border-radius: 100px 0 0 100px;
   background: #000;
   color: #fff;
   display: -webkit-flex;
@@ -3853,9 +3850,9 @@ textarea.input {
 }
 @media (max-width:47.99em) {
   .contact-us__link {
-    width: 65px;
-    height: 110px;
-    border-radius: 0 55px 55px 0
+    width: 56px;
+    height: 56px;
+    border-radius: 12px 0 0 12px
   }
   .contact-us__form .btn--submit {
     padding: 10px
@@ -3891,7 +3888,7 @@ textarea.input {
     padding-left: 16.7%;
     padding-right: 20%;
     padding-top: 5.5vw;
-    border-radius: 0 6.3vw 0 0
+    border-radius: 6.3vw 0 0 0
   }
   .contact-us__form-notice {
     margin-bottom: 43px
@@ -3925,12 +3922,12 @@ textarea.input {
 }
 @media (min-width:48em) {
   .contact-us__link {
-    width: 100px;
-    height: 172px;
-    border-radius: 0 100px 100px 0
+    width: 68px;
+    height: 68px;
+    border-radius: 12px 0 0 12px
   }
   .contact-us__link-text {
-    font-size: 18px
+    display: none
   }
 }
 @media (min-width:64em) {

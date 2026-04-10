@@ -225,8 +225,8 @@ const toggleFeedbackForm = () => {
     }
 
     document.addEventListener('click', (e)=>{
-        let _target = e.target;
-        if(_target === linkForm || _target === linkMenu || _target === linkMenuClass) {
+        const trigger = e.target.closest('#contactsFormLink, #contactsFormLinkMenu, .contactsFormLinkMenu');
+        if(trigger) {
             openForm();
             e.preventDefault();
         }
