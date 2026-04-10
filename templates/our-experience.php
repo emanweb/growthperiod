@@ -35,7 +35,7 @@ get_header('', ["headerClasses" => "header--dark"]);
       </section>
 	<?php endwhile; endif; ?>
 	<?php if( have_rows('experience_list')): ?>
-      <section class="experience-list">
+      <section class="experience-list" id="experience">
         <div class="container experience-list__container">
           <div class="experience-list__content">
 		  <?php while( have_rows('experience_list') ) : the_row(); ?>

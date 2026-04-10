@@ -5022,26 +5022,31 @@ textarea.input {
 .about-intro__thumbs-item:nth-child(15) img {
   transition-delay: 1.6s
 }
-.about-intro__menu-item {
+.about-intro__menu-item,
+.experience-intro__menu-item {
   margin-bottom: .35em
 }
-.about-intro__menu a {
+.about-intro__menu a,
+.experience-intro__menu a {
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
   color: #3ab14a
 }
 @media (min-width:320px) {
-  .about-intro__menu a {
+  .about-intro__menu a,
+  .experience-intro__menu a {
     font-size: calc(.0015625 * 100vw + 11.5px)
   }
 }
 @media (min-width:1600px) {
-  .about-intro__menu a {
+  .about-intro__menu a,
+  .experience-intro__menu a {
     font-size: 14px
   }
 }
-.about-intro__menu a:hover {
+.about-intro__menu a:hover,
+.experience-intro__menu a:hover {
   color: #2d8b3a
 }
 @media (min-width:48em) {
@@ -5093,7 +5098,8 @@ textarea.input {
     width: 18.4375vw;
     height: 18.4375vw
   }
-  .about-intro__menu-item {
+  .about-intro__menu-item,
+  .experience-intro__menu-item {
     margin-bottom: .5em
   }
 }
