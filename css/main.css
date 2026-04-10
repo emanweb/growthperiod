@@ -5144,7 +5144,7 @@ textarea.input {
   .about-description {
     font-size: 16px;
     padding-top: 6.3vw;
-    padding-bottom: 8.8vw
+    padding-bottom: 2.8vw
   }
 }
 @media (min-width:48em) and (min-width:768px) {
@@ -5588,8 +5588,8 @@ textarea.input {
 }
 @media (min-width:48em) {
   .about-sets-us-apart {
-    padding-top: 7.2vw;
-    padding-bottom: 8.5vw
+    padding-top: 2.2vw;
+    padding-bottom: 5.5vw
   }
   .about-sets-us-apart__header {
     display: grid;
@@ -5848,7 +5848,7 @@ textarea.input {
     -webkit-flex: 51.1% 0 0;
     -ms-flex: 51.1% 0 0px;
     flex: 51.1% 0 0;
-    padding-top: 5.4vw;
+    padding-top: 2.4vw;
     padding-right: 4%
   }
   .about-team__content .h2 {
@@ -6070,8 +6070,8 @@ textarea.input {
 }
 @media (min-width:48em) {
   .about-insights {
-    padding-top: 6.2vw;
-    padding-bottom: 4.6vw
+    padding-top: 2.2vw;
+    padding-bottom: 2.6vw
   }
   .about-insights__container {
     position: relative
@@ -6112,12 +6112,12 @@ textarea.input {
 }
 @media (min-width:81.25em) {
   .about-insights {
-    padding-top: 15.8vw
+    padding-top: 2.8vw
   }
   .about-insights:after {
     left: 6.2vw;
     right: 6.2vw;
-    top: 10vw
+    top: 2vw
   }
 }
 .about-giving-back {
