@@ -4765,7 +4765,7 @@ textarea.input {
 @media (min-width:64em) {
   .cases__description {
     max-width: 40vw;
-    margin-bottom: 10.3vw
+    margin-bottom: 2.3vw
   }
 }
 .about-intro {
@@ -5928,7 +5928,7 @@ textarea.input {
 }
 @media (min-width:48em) {
   .about-review {
-    padding-top: 10vw;
+    padding-top: 3vw;
     padding-bottom: 10vw
   }
   .about-review__content {
@@ -7655,7 +7655,7 @@ textarea.input {
 @media (min-width:48em) {
   .experience-intro {
     padding-top: 9.9vw;
-    padding-bottom: 10.7vw;
+    padding-bottom: 1.7vw;
     position: relative
   }
   .experience-intro__container {
@@ -7700,7 +7700,7 @@ textarea.input {
   }
 }
 .experience-list {
-  padding-bottom: 50px
+  padding-bottom: 10px
 }
 .experience-list__item {
   position: relative;
@@ -7780,7 +7780,7 @@ textarea.input {
 }
 @media (min-width:48em) {
   .experience-list {
-    padding-top: 10.6vw;
+    padding-top: 2.6vw;
     padding-bottom: 3vw
   }
   .experience-list__content {
@@ -7844,7 +7844,7 @@ textarea.input {
   }
 }
 .experience-clients {
-  padding-top: 50px;
+  padding-top: 10px;
   padding-bottom: 50px
 }
 .experience-clients .h2 {
@@ -7925,7 +7925,7 @@ textarea.input {
 }
 @media (min-width:64em) {
   .experience-clients {
-    padding-top: 4.3vw;
+    padding-top: 1.3vw;
     padding-bottom: 6.4vw
   }
   .experience-clients .h2 {
