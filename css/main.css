@@ -5064,7 +5064,7 @@ textarea.input {
     -webkit-flex: 45.8% 0 0;
     -ms-flex: 45.8% 0 0px;
     flex: 45.8% 0 0;
-    padding-top: 6.2vw;
+    padding-top: 1.2vw;
     margin-bottom: 0
   }
   .about-intro__content .h3 {
@@ -6415,7 +6415,7 @@ textarea.input {
   }
   .services-intro__info {
     padding-right: 5%;
-    padding-top: 4.2vw
+    padding-top: 1.2vw
   }
   .services-intro__info .h3 {
     line-height: 1.28;
@@ -7278,7 +7278,7 @@ textarea.input {
     -webkit-flex: 45.8% 0 0;
     -ms-flex: 45.8% 0 0px;
     flex: 45.8% 0 0;
-    padding-top: 6.2vw;
+    padding-top: 1.2vw;
     margin-bottom: 0
   }
   .industries-intro__content .h3 {
@@ -7672,7 +7672,7 @@ textarea.input {
     -ms-flex: 1;
     flex: 1;
     padding-right: 5%;
-    padding-top: 4.2vw;
+    padding-top: 1.2vw;
     margin-bottom: 0
   }
   .experience-intro__content .h3 {
