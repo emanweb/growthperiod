@@ -8828,7 +8828,12 @@ textarea.input {
 }
 .team-intro__image img {
   display: block;
-  max-width: 100%
+  max-width: 80%;
+}
+@media (min-width:1920px) {
+  .team-intro__image img {
+    max-width: 50%
+  }
 }
 .team-intro__title {
   margin-bottom: 20px
@@ -8844,8 +8849,8 @@ textarea.input {
 }
 @media (min-width:48em) {
   .team-intro {
-    padding-top: 5vw;
-    padding-bottom: 7.5vw
+    padding-top: 2vw;
+    padding-bottom: 3.5vw
   }
   .team-intro__container {
     display: -webkit-flex;
@@ -8875,7 +8880,7 @@ textarea.input {
 }
 @media (min-width:64em) {
   .team-intro {
-    padding-top: 14vw
+    padding-top: 3vw
   }
 }
 @media (min-width:81.25em) {
@@ -8976,7 +8981,7 @@ textarea.input {
     padding-bottom: 3.9vw
   }
   .team-leadership .h3 {
-    margin-bottom: 7.3vw
+    margin-bottom: 3.3vw
   }
   .team-leadership__list {
     -webkit-justify-content: unset;
@@ -9233,8 +9238,8 @@ textarea.input {
 }
 @media (min-width:48em) {
   .team-experts {
-    padding-top: 7.5vw;
-    padding-bottom: 5vw
+    padding-top: 1.5vw;
+    padding-bottom: 3vw
   }
   .team-experts__filter-controls {
     margin-bottom: 2.65vw
