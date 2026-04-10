@@ -7566,18 +7566,12 @@ textarea.input {
   }
 }
 .experience-intro {
-  position: relative
+  position: relative;
+  padding-top: 70px;
+  padding-bottom: 50px
 }
 .experience-intro__container {
-  padding-top: 70px;
-  padding-bottom: 50px;
-  position: relative;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column
+  position: relative
 }
 .experience-intro__light {
   background: #3ab14a;
@@ -7595,7 +7589,8 @@ textarea.input {
 .experience-intro__description {
   letter-spacing: .2px;
   line-height: 150%;
-  color: #434643
+  color: #434643;
+  margin-bottom: 30px;
 }
 .experience-intro__image {
   display: -webkit-flex;
@@ -7658,35 +7653,50 @@ textarea.input {
   margin-bottom: 30px
 }
 @media (min-width:48em) {
+  .experience-intro {
+    padding-top: 9.9vw;
+    padding-bottom: 10.7vw;
+    position: relative
+  }
   .experience-intro__container {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    overflow: hidden;
-    position: relative;
-    padding-top: 10.9vw;
-    padding-bottom: .6vw;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    padding-right: 6.3%
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    padding-right: 6.1875%
   }
   .experience-intro__content {
-    -webkit-flex: 46.9% 0 0;
-    -ms-flex: 46.9% 0 0px;
-    flex: 46.9% 0 0;
-    padding-right: 10%;
-    margin: 0;
-    padding-top: 1.7vw
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    padding-right: 5%;
+    padding-top: 4.2vw;
+    margin-bottom: 0
   }
   .experience-intro__content .h3 {
-    margin-bottom: 2.6vw
+    margin-bottom: 2.4vw
+  }
+  .experience-intro__description {
+    font-size: 16px;
+    max-width: 86%
   }
   .experience-intro__image {
     -webkit-flex: 47% 0 0;
     -ms-flex: 47% 0 0px;
     flex: 47% 0 0;
     max-width: 587px
+  }
+}
+@media (min-width:48em) and (min-width:768px) {
+  .experience-intro__description {
+    font-size: calc(.0096153846 * 100vw + 8.6153846154px)
+  }
+}
+@media (min-width:48em) and (min-width:1600px) {
+  .experience-intro__description {
+    font-size: 24px
   }
 }
 .experience-list {
