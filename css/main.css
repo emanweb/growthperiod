@@ -7351,9 +7351,13 @@ textarea.input {
 .industries-infoblock__description p {
   margin: 0 0 .8em
 }
-.industries-infoblock__description .second {
-  padding-left: 50px
+
+@media (min-width:786px) {
+  .industries-infoblock__description .second {
+    padding-left: 50px
+  }
 }
+
 .industries-infoblock__list {
   margin-bottom: 2.875vw
 }
