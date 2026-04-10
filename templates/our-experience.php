@@ -12,20 +12,24 @@ get_header('', ["headerClasses" => "header--dark"]);
           <div class="experience-intro__content" data-aos="fade-in">
             <h1 class="h3"><?php echo get_sub_field('title'); ?></h1>
             <div class="experience-intro__description"><?php echo get_sub_field('description'); ?></div>
+            <div class="experience-intro__menu">
+      <?php if( have_rows('links')): while( have_rows('links') ) : the_row(); ?>
+              <?php if(!empty(get_sub_field('link'))) { ?><div class="experience-intro__menu-item"><a class="experience-intro__menu-link" href="<?php echo get_sub_field('link')['url']; ?>" data-smooth-scroll="<?php echo get_sub_field('link')['url']; ?>"><?php echo get_sub_field('link')['title']; ?></a></div><?php } ?>
+			<?php endwhile; endif; ?>
+            </div>
           </div>
           <div class="experience-intro__image" data-aos="fade-in">
-		    <?php
-			if(get_sub_field('show_tile')[0] == 'yes'){ ?>
-            <div class="experience-intro__image-tile"><span data-aos="fade-in" data-aos-delay="50"></span><span data-aos="fade-in" data-aos-delay="100"></span><span data-aos="fade-in" data-aos-delay="150"></span><span data-aos="fade-in" data-aos-delay="250"></span><span data-aos="fade-in" data-aos-delay="300"></span><span data-aos="fade-in" data-aos-delay="350"></span></div>
-			<?php } ?>
-            <?php
-			if(!empty(get_sub_field('image'))){ ?>
-			<picture>
-			<?php
-				echo getImageHTMLCodeWebp( get_sub_field('image'), 'full', ['class' => ''] );
-			?>
-			</picture>
-			<?php } ?>
+            <div class="experience-intro__image-container">
+              <?php
+      if(!empty(get_sub_field('image'))){ ?>
+      <picture>
+      <?php
+        echo getImageHTMLCodeWebp( get_sub_field('image'), 'full', ['class' => ''] );
+      ?>
+      </picture>
+      <?php } ?>
+              <div class="experience-intro__image-tile"></div>
+            </div>
           </div>
         </div>
       </section>
@@ -98,7 +102,7 @@ get_header('', ["headerClasses" => "header--dark"]);
       </section>
 	  <?php endwhile; endif; ?>
 	  <?php if( have_rows('case_studies')): while( have_rows('case_studies') ) : the_row(); ?>
-      <section class="cases">
+      <section class="cases" id="case-studies">
         <div class="container cases__container">
           <h2 class="h2 js-type"><?php echo get_sub_field('title'); ?></h2>
           <div class="cases__description" data-aos="fade-in" data-aos-duration="2000"><?php echo get_sub_field('description'); ?></div>

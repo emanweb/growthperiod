@@ -7592,19 +7592,27 @@ textarea.input {
   color: #434643
 }
 .experience-intro__image {
-  margin-left: -20px;
-  margin-right: -20px;
-  position: relative
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center
 }
 .experience-intro__image img {
-  width: 100%
+  display: block;
+  max-width: 100%
+}
+.experience-intro__image-container {
+  position: relative
 }
 .experience-intro__image-tile {
   position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
   top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0
+  z-index: 1
 }
 .experience-intro__image-tile span {
   display: block;
@@ -7669,11 +7677,10 @@ textarea.input {
     margin-bottom: 2.6vw
   }
   .experience-intro__image {
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    margin: 0;
-    padding-left: 1px
+    -webkit-flex: 47% 0 0;
+    -ms-flex: 47% 0 0px;
+    flex: 47% 0 0;
+    max-width: 587px
   }
 }
 .experience-list {
