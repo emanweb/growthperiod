@@ -49,7 +49,9 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
  * About intro menu CTA links
  * Creates a larger pill-style visual treatment for key in-page navigation.
  */
-.about-intro__menu .about-intro__menu-link {
+.about-intro__menu .about-intro__menu-link,
+.services-intro__menu .services-intro__menu-link,
+.experience-intro__menu .experience-intro__menu-link {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -67,7 +69,9 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
-.about-intro__menu .about-intro__menu-link:hover {
+.about-intro__menu .about-intro__menu-link:hover,
+.services-intro__menu .services-intro__menu-link:hover,
+.experience-intro__menu .experience-intro__menu-link:hover {
 	transform: translateY(-1px);
 	box-shadow: 0 14px 28px rgba(58, 177, 74, 0.3);
 	background: linear-gradient(135deg, #44bf55 0%, #2f9440 100%);
@@ -75,21 +79,27 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 }
 /* desktop sizing for primary About intro links. */
 @media (min-width: 48em) {
-	.about-intro__menu .about-intro__menu-link {
+	.about-intro__menu .about-intro__menu-link,
+	.services-intro__menu .services-intro__menu-link,
+	.experience-intro__menu .experience-intro__menu-link {
 		padding: 11px 18px;
 		font-size: 18px;
 	}
 }
 
 @media (min-width: 64em) {
-	.about-intro__menu .about-intro__menu-link {
+	.about-intro__menu .about-intro__menu-link,
+	.services-intro__menu .services-intro__menu-link,
+	.experience-intro__menu .experience-intro__menu-link {
 		padding: 12px 20px;
 		font-size: 20px;
 	}
 }
 
 @media (min-width: 81.25em) {
-	.about-intro__menu .about-intro__menu-link {
+	.about-intro__menu .about-intro__menu-link,
+	.services-intro__menu .services-intro__menu-link,
+	.experience-intro__menu .experience-intro__menu-link {
 		padding: 14px 22px;
 		font-size: 22px;
 	}
