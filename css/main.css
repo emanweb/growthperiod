@@ -3936,8 +3936,8 @@ textarea.input {
   }
 }
 .about {
-  padding-top: 5vw;
-  padding-bottom: 5vw
+  padding-top: 1vw;
+  padding-bottom: 2vw
 }
 .about__description {
   font-size: 18px;
@@ -3974,8 +3974,8 @@ textarea.input {
 }
 @media (min-width:48em) {
   .about {
-    padding-top: 3vw;
-    padding-bottom: 7.7vw
+    padding-top: 1vw;
+    padding-bottom: 2.7vw
   }
   .about__description {
     font-size: 22px;
@@ -4165,8 +4165,8 @@ textarea.input {
 }
 @media (min-width:48em) {
   .clients {
-    padding-top: 5.4vw;
-    padding-bottom: 4.9vw;
+    padding-top: 1.4vw;
+    padding-bottom: 2.9vw;
     position: relative
   }
   .clients .h2 {
@@ -4319,10 +4319,10 @@ textarea.input {
 }
 @media (min-width:48em) {
   .services {
-    padding-top: 3vw
+    padding-top: 1vw
   }
   .services .h2 {
-    margin-bottom: 3.6vw
+    margin-bottom: 0.6vw
   }
   .services__list {
     margin-bottom: 2vw
@@ -4444,11 +4444,11 @@ textarea.input {
 }
 @media (min-width:48em) {
   .industries {
-    padding-top: 2.6vw;
-    padding-bottom: 5vw
+    padding-top: 1.6vw;
+    padding-bottom: 3vw
   }
   .industries .h2 {
-    margin-bottom: 3.6vw
+    margin-bottom: 0.6vw
   }
   .industries__list {
     margin-bottom: 2vw
