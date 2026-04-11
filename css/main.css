@@ -8601,13 +8601,13 @@ textarea.input {
     padding-right: 6.25vw
   }
   .case-intro__info {
-    -webkit-align-self: flex-end;
-    -ms-flex-item-align: end;
-    align-self: flex-end;
+    -webkit-align-self: flex-start;
+    -ms-flex-item-align: start;
+    align-self: flex-start;
     -webkit-flex: 1;
     -ms-flex: 1;
     flex: 1;
-    margin-bottom: -30px
+    margin-bottom: 0
   }
   .case-intro__info-title {
     margin-right: -1.25vw
