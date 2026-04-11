@@ -8591,8 +8591,8 @@ textarea.input {
 }
 @media (min-width:48em) {
   .case-intro {
-    padding-top: calc(5vw + 50px);
-    padding-bottom: 11.25vw
+    padding-top: calc(1vw + 50px);
+    padding-bottom: 2.25vw
   }
   .case-intro__container {
     display: -webkit-flex;
@@ -8636,7 +8636,7 @@ textarea.input {
 }
 @media (min-width:64em) {
   .case-intro {
-    padding-top: calc(8.1vw + 50px)
+    padding-top: calc(2.1vw + 50px)
   }
 }
 .case-info {
@@ -8697,7 +8697,7 @@ textarea.input {
 }
 @media (min-width:48em) {
   .case-info {
-    padding-top: 8.25vw;
+    padding-top: 2.25vw;
     padding-bottom: 5.4vw
   }
 }
