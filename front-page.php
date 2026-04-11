@@ -184,7 +184,7 @@ get_header();
 				'posts_per_page' => 4,
 				'ignore_sticky_posts' => false,
 				'orderby' => 'date', 
-				'order' => 'ASC', 
+        'order' => 'DESC', 
 			);  
 			
 			if(!empty(get_sub_field('case_studies_list'))){
@@ -194,6 +194,7 @@ get_header();
 			
 			$loop = new WP_Query( $args ); 
 			$string = '';
+      $case_link_mode = check_using_ip_address();
 			if($loop->have_posts() ): ?>
 			<div class="cases__list">
 			<?php
@@ -201,23 +202,23 @@ get_header();
 			$totalpost = $loop->found_posts;
 			while ( $loop->have_posts() ) : $loop->the_post(); 
 			global $post; ?>
-			<a class="cases__list-item <?php if(check_using_ip_address() =='popup') { ?>popup-link<?php } ?>" data-caseurl="<?php echo get_the_permalink(); ?>" href="<?php if(check_using_ip_address() =='popup') { echo "#";  } else { echo get_the_permalink(); } ?>" <?php if(check_using_ip_address() =='popup') { ?>data-popup="#popupSolution12"<?php } ?>>
+      <a class="cases__list-item <?php if($case_link_mode =='popup') { ?>popup-link<?php } ?>" data-caseurl="<?php echo esc_url(get_the_permalink()); ?>" href="<?php if($case_link_mode =='popup') { echo "#";  } else { echo esc_url(get_the_permalink()); } ?>" <?php if($case_link_mode =='popup') { ?>data-popup="#popupSolution12"<?php } ?>>
               <div class="cases__list-image">
                 <picture>
                 <?php 
 				if(get_post_thumbnail_id( get_the_ID())){ ?> 
-					<img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>" alt="<?php the_title(); ?>"/>
+          <img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>" alt="<?php echo esc_attr(wp_strip_all_tags(get_the_title())); ?>"/>
 				<?php } ?>
                 </picture>
               </div>
               <div class="cases__list-content">
-                <div class="cases__list-text"><?php echo get_the_title(); ?></div>
-                <div class="cases__list-company"><?php echo get_field('client_name'); ?></div>
+        <div class="cases__list-text"><?php echo wp_kses_post(get_the_title()); ?></div>
+        <div class="cases__list-company"><?php echo esc_html(get_field('client_name')); ?></div>
               </div></a>
 			<?php endwhile; ?>  
 			</div>
 			<?php endif; 
-			wp_reset_query();
+      wp_reset_postdata();
 			?>
 			<?php if(!empty(get_sub_field('link'))) { ?>
 			<div class="cases__list-more" data-aos="fade-up" data-aos-duration="2000"><a class="btn-more" href="<?php echo get_sub_field('link')['url']; ?>">

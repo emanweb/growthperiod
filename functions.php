@@ -276,16 +276,33 @@ function get_client_ip() {
 }
 
 function check_using_ip_address(){
+	static $mode = null;
+	if ( null !== $mode ) {
+		return $mode;
+	}
+
     global $wpdb;
-    $ip_address = get_client_ip();
+	$ip_address = trim((string) get_client_ip());
+	if ( strpos($ip_address, ',') !== false ) {
+		$ip_parts = explode(',', $ip_address);
+		$ip_address = trim($ip_parts[0]);
+	}
+
+	if ( empty($ip_address) || ! filter_var($ip_address, FILTER_VALIDATE_IP) ) {
+		$mode = 'popup';
+		return $mode;
+	}
+
     $table = $wpdb->prefix . 'db7_forms';
-    $query = "SELECT * FROM $table WHERE `form_value` LIKE '%$ip_address%'";
-    $result = $wpdb->get_results ( $query );
-    if(!empty($result)){
-        return 'link';
-    } else {
-        return 'popup';
-    }
+	$like_ip = '%' . $wpdb->esc_like($ip_address) . '%';
+	$query = $wpdb->prepare(
+		"SELECT 1 FROM {$table} WHERE `form_value` LIKE %s LIMIT 1",
+		$like_ip
+	);
+	$result = $wpdb->get_var($query);
+
+	$mode = !empty($result) ? 'link' : 'popup';
+	return $mode;
 }
 /* ERC: Removed so we could display posts in their own URL/webpage 
 add_action( 'template_redirect', 'redirect_cpt_singular_posts_growtg' );
