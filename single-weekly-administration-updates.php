@@ -65,7 +65,7 @@ get_header('', ["headerClasses" => "header--dark"]);
           <h2 class="h3"><?php echo get_sub_field('title'); ?></h2>
 		  <?php
 			$args = array(  
-				'post_type' => 'weekly-administration-updates',
+        'post_type' => 'weekly_admin_updates',
 				'post_status' => 'publish',
 				'posts_per_page' => 4,
 				'ignore_sticky_posts' => false,

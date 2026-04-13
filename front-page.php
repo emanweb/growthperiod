@@ -241,7 +241,7 @@ get_header();
           <div class="admin-updates__description" data-aos="fade-in" data-aos-duration="2000"><?php echo get_sub_field('description'); ?></div>
 			<?php
 			$args = array(  
-				'post_type' => 'weekly-administration-updates',
+        'post_type' => 'weekly_admin_updates',
 				'post_status' => 'publish',
 				'posts_per_page' => 4,
 				'ignore_sticky_posts' => false,
