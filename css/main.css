@@ -4919,8 +4919,7 @@ textarea.input {
   background: #fff
 }
 .admin-update-info__container {
-  display: block;
-  max-width: 760px
+  display: block
 }
 .admin-update-info__title {
   font-weight: 700;
@@ -4932,7 +4931,8 @@ textarea.input {
 .admin-update-info__content {
   font-size: 15px;
   line-height: 1.75;
-  color: #434643
+  color: #434643;
+  max-width: 760px
 }
 .admin-update-info__content p:first-child {
   margin-top: 0
