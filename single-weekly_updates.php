@@ -16,8 +16,13 @@ get_header('', ["headerClasses" => "header--dark"]);
             <?php if( get_field('weekly_title') ) { ?>
               <div class="admin-update-intro__info-subtitle"><?php echo esc_html( get_field('weekly_title') ); ?></div>
             <?php } ?>
-            <?php if( get_field('week_date') ) { ?>
-              <div class="admin-update-intro__info-date"><?php echo esc_html( get_field('week_date') ); ?></div>
+            <?php
+            $week_date_raw = get_field('week_date');
+            if( $week_date_raw ) {
+                $date_obj = DateTime::createFromFormat('d/m/Y', $week_date_raw);
+                $formatted_date = $date_obj ? $date_obj->format('n.j.Y') : $week_date_raw;
+            ?>
+              <div class="admin-update-intro__info-date">Weekly Update <?php echo esc_html( $formatted_date ); ?></div>
             <?php } ?>
             <div class="admin-update-intro__info-title">
               <h1 class="h3"><?php the_title(); ?></h1>
@@ -32,10 +37,10 @@ get_header('', ["headerClasses" => "header--dark"]);
       </section>
       <?php if( have_rows('content_area') ) : while( have_rows('content_area') ) : the_row(); ?>
         <?php if( get_row_layout() == 'content_item' ) : ?>
-        <section class="admin-update-info" data-aos="fade-in">
+        <section class="admin-update-info">
           <div class="container admin-update-info__container">
             <?php if( get_sub_field('title') ) { ?>
-              <h2 class="admin-update-info__title h3"><?php echo esc_html( get_sub_field('title') ); ?></h2>
+              <h3 class="admin-update-info__title h3"><?php echo esc_html( get_sub_field('title') ); ?></h3>
             <?php } ?>
             <?php if( get_sub_field('content_section') ) { ?>
               <div class="admin-update-info__content"><?php echo wp_kses_post( get_sub_field('content_section') ); ?></div>
@@ -48,10 +53,11 @@ get_header('', ["headerClasses" => "header--dark"]);
       <?php
       $pdf = get_field('pdf_upload');
       if( $pdf ) : ?>
-      <section class="admin-update-pdf">
+      <section class="admin-update-pdf" data-aos="fade-in">
         <div class="container admin-update-pdf__container">
-          <a class="btn admin-update-pdf__link" href="<?php echo esc_url( $pdf['url'] ); ?>" target="_blank" rel="noopener noreferrer">
-            <?php echo esc_html( $pdf['title'] ? $pdf['title'] : 'Download PDF' ); ?>
+          <span class="admin-update-pdf__label">Download</span>
+          <a class="admin-update-pdf__link" href="<?php echo esc_url( $pdf['url'] ); ?>" target="_blank" rel="noopener noreferrer">
+            <?php echo esc_html( $pdf['title'] ? $pdf['title'] : 'Weekly Update PDF' ); ?>
           </a>
         </div>
       </section>
