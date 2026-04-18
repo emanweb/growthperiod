@@ -5000,9 +5000,6 @@ textarea.input {
     padding-top: calc(2vw + 50px);
     padding-bottom: 0
   }
-  .admin-update-info__container {
-    max-width: none
-  }
   .admin-update-pdf {
     padding-bottom: 7vw
   }
