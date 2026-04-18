@@ -28,11 +28,6 @@ get_header('', ["headerClasses" => "header--dark"]);
               <h1 class="h3"><?php the_title(); ?></h1>
             </div>
           </div>
-          <div class="admin-update-intro__image" data-aos="fade-in">
-            <?php if( get_post_thumbnail_id( get_the_ID() ) ) { ?>
-              <picture><img src="<?php echo esc_url( get_the_post_thumbnail_url( get_the_ID(), 'full' ) ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>"/></picture>
-            <?php } ?>
-          </div>
         </div>
       </section>
       <?php if( have_rows('content_area') ) : while( have_rows('content_area') ) : the_row(); ?>
