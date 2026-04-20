@@ -86,7 +86,7 @@
     </footer>
     <div class="contact-us">
       <div class="contact-us__link" id="contactsFormLink" aria-label="Open contact form" role="button">
-        <div class="contact-us__link-text">Contact us</div>
+        <div class="contact-us__link-text">Contact</div>
         <div class="contact-us__link-icon">
           <svg class="icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M3 7.2c0-1.2 1-2.2 2.2-2.2h13.6C20 5 21 6 21 7.2v9.6c0 1.2-1 2.2-2.2 2.2H5.2C4 19 3 18 3 16.8V7.2zm2 .2 7 4.9 7-4.9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>

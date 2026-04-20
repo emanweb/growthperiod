@@ -3707,24 +3707,33 @@ textarea.input {
 }
 .contact-us__link {
   width: 68px;
-  height: 68px;
+  height: 84px;
   border-radius: 12px 0 0 12px;
   background: #3ab14a;
   color: #fff;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  gap: 5px;
   cursor: pointer;
   transition: box-shadow .3s ease,background-color .3s ease
 }
 .contact-us__link-text {
-  display: none
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  line-height: 1
 }
 .contact-us__link-icon {
   transition: -webkit-transform .3s ease;
@@ -3851,8 +3860,12 @@ textarea.input {
 @media (max-width:47.99em) {
   .contact-us__link {
     width: 56px;
-    height: 56px;
-    border-radius: 12px 0 0 12px
+    height: 72px;
+    border-radius: 12px 0 0 12px;
+    gap: 4px
+  }
+  .contact-us__link-text {
+    font-size: 10px
   }
   .contact-us__form .btn--submit {
     padding: 10px
@@ -3923,11 +3936,12 @@ textarea.input {
 @media (min-width:48em) {
   .contact-us__link {
     width: 68px;
-    height: 68px;
+    height: 84px;
     border-radius: 12px 0 0 12px
   }
   .contact-us__link-text {
-    display: none
+    display: block;
+    font-size: 14px
   }
 }
 @media (min-width:64em) {
