@@ -3706,8 +3706,8 @@ textarea.input {
   z-index: 90
 }
 .contact-us__link {
-  width: 68px;
-  height: 84px;
+  width: 72px;
+  height: 36px;
   border-radius: 12px 0 0 12px;
   background: #3ab14a;
   color: #fff;
@@ -3729,7 +3729,7 @@ textarea.input {
 }
 .contact-us__link-text {
   display: block;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .5px;
@@ -3859,8 +3859,8 @@ textarea.input {
 }
 @media (max-width:47.99em) {
   .contact-us__link {
-    width: 56px;
-    height: 72px;
+    width: 60px;
+    height: 30px;
     border-radius: 12px 0 0 12px;
     gap: 4px
   }
@@ -3935,13 +3935,13 @@ textarea.input {
 }
 @media (min-width:48em) {
   .contact-us__link {
-    width: 68px;
-    height: 84px;
+    width: 40px;
+    height: 20px;
     border-radius: 12px 0 0 12px
   }
   .contact-us__link-text {
     display: block;
-    font-size: 14px
+    font-size: 11px
   }
 }
 @media (min-width:64em) {
