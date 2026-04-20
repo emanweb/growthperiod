@@ -85,7 +85,7 @@ get_header('', ["headerClasses" => "header--dark"]);
         <div class="container about-sets-us-apart__container">
           <div class="about-sets-us-apart__header" data-aos="fade-in">
             <div class="about-sets-us-apart__header-title">
-              <div class="about-sets-us-apart__eyebrow">growthperiod</div>
+              <div class="about-sets-us-apart__eyebrow">growth[period]</div>
               <h2 class="h2"><?php echo get_sub_field('title'); ?></h2>
             </div>
             <div class="about-sets-us-apart__header-image" data-aos="fade-in">
