@@ -3935,8 +3935,8 @@ textarea.input {
 }
 @media (min-width:48em) {
   .contact-us__link {
-    width: 72px; 
-    height: 36px;
+    width: 80px; 
+    height: 40x;
     border-radius: 12px 0 0 12px
   }
   .contact-us__link-text {
