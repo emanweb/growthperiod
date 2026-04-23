@@ -3733,7 +3733,8 @@ textarea.input {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .5px;
-  line-height: 1
+  line-height: 13px;
+  text-align: center
 }
 .contact-us__link-icon {
   transition: -webkit-transform .3s ease;
@@ -3865,7 +3866,9 @@ textarea.input {
     gap: 4px
   }
   .contact-us__link-text {
-    font-size: 10px
+    font-size: 10px;
+    text-align: center;
+    line-height: 11px
   }
   .contact-us__form .btn--submit {
     padding: 10px
@@ -3936,12 +3939,14 @@ textarea.input {
 @media (min-width:48em) {
   .contact-us__link {
     width: 80px; 
-    height: 40x;
+    height: 40px;
     border-radius: 12px 0 0 12px
   }
   .contact-us__link-text {
     display: block;
-    font-size: 11px
+    font-size: 11px;
+    text-align: center;
+    line-height: 13px
   }
 }
 @media (min-width:64em) {
