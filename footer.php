@@ -86,7 +86,7 @@
     </footer>
     <div class="contact-us">
       <div class="contact-us__link" id="contactsFormLink" aria-label="Open contact form" role="button">
-        <div class="contact-us__link-text">Contact</div>        
+        <div class="contact-us__link-text">Contact<br/>Us</div>        
       </div>
       <div class="contact-us__form" id="contactsFrom">
         <div class="contact-us__form-close" id="contactsFromClose">
