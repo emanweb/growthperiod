@@ -3793,6 +3793,13 @@ textarea.input {
   background: #000;
   color: #fff;
   display: -webkit-flex;
+  text-align: center;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
@@ -3801,9 +3808,13 @@ textarea.input {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  width: 100%;
+  height: 100%;
+  -ms-flex-pack: center;
+  justify-content: center;
   z-index: -1;
   cursor: pointer;
-  transition: box-shadow .5s ease
+  line-height: 1.1;
 }
 .contact-us__form-close .icon {
   fill: #fff
@@ -3863,12 +3874,12 @@ textarea.input {
     width: 60px;
     height: 30px;
     border-radius: 12px 0 0 12px;
-    gap: 4px
+    gap: 0;
   }
   .contact-us__link-text {
     font-size: 10px;
     text-align: center;
-    line-height: 11px
+    line-height: 1.1;
   }
   .contact-us__form .btn--submit {
     padding: 10px
@@ -3943,10 +3954,12 @@ textarea.input {
     border-radius: 12px 0 0 12px
   }
   .contact-us__link-text {
-    display: block;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
     font-size: 11px;
     text-align: center;
-    line-height: 13px
+    line-height: 1.1;
   }
 }
 @media (min-width:64em) {
