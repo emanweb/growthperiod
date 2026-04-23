@@ -130,12 +130,30 @@ get_header('', ["headerClasses" => "header--dark"]);
             $apart_gallery_index++;
           } ?>
         </div>
-        <?php } elseif(!empty(get_sub_field('image'))){ ?>
+        <?php } elseif(!empty(get_sub_field('image'))){
+          $image_link = get_sub_field('image_link');
+          $image_link_url = '';
+          $image_link_target = '';
+
+          if (is_array($image_link) && !empty($image_link['url'])) {
+            $image_link_url = $image_link['url'];
+            $image_link_target = !empty($image_link['target']) ? $image_link['target'] : '';
+          } elseif (is_string($image_link) && !empty($image_link)) {
+            $image_link_url = $image_link;
+          }
+
+          if (!empty($image_link_url)) {
+        ?>
+        <a href="<?php echo esc_url($image_link_url); ?>"<?php echo $image_link_target ? ' target="' . esc_attr($image_link_target) . '" rel="noopener noreferrer"' : ''; ?>>
+        <?php } ?>
         <picture>
         <?php
           echo getImageHTMLCodeWebp( get_sub_field('image'), 'full', ['class' => ''] );
         ?>
         </picture>
+        <?php if (!empty($image_link_url)) { ?>
+        </a>
+        <?php } ?>
         <?php } ?>
         <?php
         $show_tile = get_sub_field('show_tile');
