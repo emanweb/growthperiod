@@ -288,7 +288,7 @@ get_header();
               <div class="services__list-thumb">
                 <?php if(get_post_thumbnail_id( get_the_ID())){ ?>
                 <picture>
-                  <img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>" alt="<?php echo esc_attr(wp_strip_all_tags(get_the_title())); ?>"/>
+                  <img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), '')); ?>" alt="<?php echo esc_attr(wp_strip_all_tags(get_the_title())); ?>"/>
                 </picture>
                 <?php } ?>
               </div>
