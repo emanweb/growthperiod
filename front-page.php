@@ -248,11 +248,22 @@ get_header();
       </div>
       <?php if(!empty($weekly_section_image)){ ?>
       <div class="services__weekly-image" data-aos="fade-in" data-aos-duration="2000">
-        <picture>
         <?php
-          echo getImageHTMLCodeWebp( $weekly_section_image, 'full', ['class' => 'services__weekly-image-img'] );
+          $weekly_image_src = '';
+          $weekly_image_alt = '';
+
+          if ( is_array( $weekly_section_image ) ) {
+            $weekly_image_src = ! empty( $weekly_section_image['url'] ) ? $weekly_section_image['url'] : '';
+            $weekly_image_alt = ! empty( $weekly_section_image['alt'] ) ? $weekly_section_image['alt'] : '';
+          } else {
+            $weekly_image_src = wp_get_attachment_image_url( $weekly_section_image, 'full' );
+            $weekly_image_alt = get_post_meta( (int) $weekly_section_image, '_wp_attachment_image_alt', true );
+          }
+
+          if ( $weekly_image_src ) {
         ?>
-        </picture>
+        <img class="services__weekly-image-img" src="<?php echo esc_url( $weekly_image_src ); ?>" alt="<?php echo esc_attr( $weekly_image_alt ? $weekly_image_alt : $weekly_section_title ); ?>" />
+        <?php } ?>
       </div>
       <?php } ?>
 			<?php
