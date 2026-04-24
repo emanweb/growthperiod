@@ -156,3 +156,11 @@ div#experienceAlphabet span {
 		font-size: 22px;
 	}
 }
+
+
+img.services__weekly-image-img {
+	display: block;
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+}
