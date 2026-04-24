@@ -247,10 +247,10 @@ get_header();
       <?php echo $weekly_section_description; ?>
       </div>
       <?php if(!empty($weekly_section_image)){ ?>
-      <div data-aos="fade-in" data-aos-duration="2000" style="margin: 24px 0 32px; max-width: 520px; width: 100%;">
+      <div class="services__weekly-image" data-aos="fade-in" data-aos-duration="2000">
         <picture>
         <?php
-          echo getImageHTMLCodeWebp( $weekly_section_image, 'full', ['class' => ''] );
+          echo getImageHTMLCodeWebp( $weekly_section_image, 'full', ['class' => 'services__weekly-image-img'] );
         ?>
         </picture>
       </div>
