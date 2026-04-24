@@ -161,7 +161,7 @@ div#experienceAlphabet span {
 img.services__weekly-image-img {
 	display: block;
 	width: 100%;
-	max-width: 100%;
+	max-width: 570px;
 	height: auto;
 }
 
