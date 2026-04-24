@@ -312,3 +312,27 @@ function redirect_cpt_singular_posts_growtg() {
     exit;
   }
 } */
+
+add_action( 'template_redirect', 'growthperiod_weekly_updates_listing_route', 0 );
+function growthperiod_weekly_updates_listing_route() {
+	if ( is_admin() ) {
+		return;
+	}
+
+	$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? (string) $_SERVER['REQUEST_URI'] : '';
+	$request_path = trim( (string) parse_url( $request_uri, PHP_URL_PATH ), '/' );
+	$home_path = trim( (string) parse_url( home_url( '/' ), PHP_URL_PATH ), '/' );
+
+	if ( '' !== $home_path && 0 === strpos( $request_path, $home_path . '/' ) ) {
+		$request_path = substr( $request_path, strlen( $home_path ) + 1 );
+	}
+
+	if ( 'weekly-updates' !== $request_path ) {
+		return;
+	}
+
+	status_header( 200 );
+	nocache_headers();
+	include get_template_directory() . '/archive-weekly_updates.php';
+	exit;
+}
