@@ -237,8 +237,24 @@ get_header();
 	<?php if( have_rows('weekly_administration_updates')): while( have_rows('weekly_administration_updates') ) : the_row(); ?>
       <section class="services">
         <div class="container services__container">
-          <h2 class="h2 js-type"><?php echo get_sub_field('title') ? esc_html(get_sub_field('title')) : 'Weekly Updates'; ?></h2>
-          <div class="services__description" data-aos="fade-in" data-aos-duration="2000"><?php echo get_sub_field('description'); ?></div>
+      <?php
+      $weekly_section_title = get_sub_field('title');
+      $weekly_section_description = get_sub_field('description');
+      $weekly_section_image = get_sub_field('image');
+      ?>
+          <h2 class="h2 js-type"><?php echo $weekly_section_title ? wp_kses_post($weekly_section_title) : 'Weekly Updates'; ?></h2>
+          <div class="services__description" data-aos="fade-in" data-aos-duration="2000" style="display:flex; align-items:flex-start; justify-content:space-between; gap:24px; flex-wrap:wrap;">
+      <div style="flex:1 1 320px; min-width:280px;"><?php echo $weekly_section_description; ?></div>
+      <?php if(!empty($weekly_section_image)){ ?>
+      <div style="flex:0 0 auto; margin-left:auto; max-width:320px; width:100%;">
+        <picture>
+        <?php
+          echo getImageHTMLCodeWebp( $weekly_section_image, 'full', ['class' => ''] );
+        ?>
+        </picture>
+      </div>
+      <?php } ?>
+      </div>
 			<?php
 			$args = array(
         'post_type' => 'weekly_updates',
