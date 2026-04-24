@@ -4,7 +4,7 @@ set -euo pipefail
 usage() {
   cat <<'EOF'
 Usage:
-  ./scripts/deploy-theme-modified.sh [--commit=<sha>] [--commit-message=<message>]
+  ./scripts/deploy-theme-modified.sh [--dry-run] [--commit=<sha>]
 
 Configured defaults in script:
   STAGING_SSH_HOST     20.163.8.61
@@ -20,12 +20,12 @@ Optional env vars (override defaults):
 Optional env vars:
   STAGING_SSH_PORT     SSH port (default: 22)
   STAGING_SSH_KEY      Path to SSH private key (example: ~/.ssh/staging_key.pem)
-  STAGING_USE_SUDO     Use sudo for final file placement on server (0 or 1, default: 1)
+  STAGING_USE_SUDO     Use sudo for final file placement on server (0 or 1, default: 0)
   STAGING_CHOWN_TARGET Owner/group for final chown (default: www-data:www-data)
 
 Options:
-  --commit=<sha>               Deploy files changed in a specific commit (skips git add/commit/push)
-  --commit-message=<message>   Commit message to use when creating a new commit
+  -n, --dry-run        Show what would be uploaded without copying files
+  -c, --commit <sha>   Deploy files changed in a specific commit
   -h, --help           Show this help
 EOF
 }
@@ -39,22 +39,26 @@ else
   DEFAULT_STAGING_SSH_KEY="/Users/emanuelcosta/Desktop/SSH/WebServer20251021_key.pem"
 fi
 
+DRY_RUN=0
 COMMIT_REF=""
-COMMIT_MESSAGE=""
 while (($#)); do
   case "$1" in
+    -n|--dry-run)
+      DRY_RUN=1
+      ;;
+    -c|--commit)
+      if (($# < 2)); then
+        echo "Missing value for $1" >&2
+        usage >&2
+        exit 1
+      fi
+      COMMIT_REF="$2"
+      shift
+      ;;
     --commit=*)
       COMMIT_REF="${1#*=}"
       if [[ -z "$COMMIT_REF" ]]; then
         echo "Missing value for --commit" >&2
-        usage >&2
-        exit 1
-      fi
-      ;;
-    --commit-message=*)
-      COMMIT_MESSAGE="${1#*=}"
-      if [[ -z "$COMMIT_MESSAGE" ]]; then
-        echo "Missing value for --commit-message" >&2
         usage >&2
         exit 1
       fi
@@ -77,7 +81,7 @@ STAGING_SSH_USER="${STAGING_SSH_USER:-$DEFAULT_STAGING_SSH_USER}"
 STAGING_THEME_PATH="${STAGING_THEME_PATH:-$DEFAULT_STAGING_THEME_PATH}"
 STAGING_SSH_PORT="${STAGING_SSH_PORT:-22}"
 STAGING_SSH_KEY="${STAGING_SSH_KEY:-$DEFAULT_STAGING_SSH_KEY}"
-STAGING_USE_SUDO="${STAGING_USE_SUDO:-1}"
+STAGING_USE_SUDO="${STAGING_USE_SUDO:-0}"
 STAGING_CHOWN_TARGET="${STAGING_CHOWN_TARGET:-www-data:www-data}"
 
 if [[ "$STAGING_USE_SUDO" != "0" && "$STAGING_USE_SUDO" != "1" ]]; then
@@ -100,42 +104,6 @@ fi
 
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 cd "$REPO_ROOT"
-
-suggest_commit_message() {
-  local changed_paths
-  changed_paths="$(git status --porcelain)"
-
-  if grep -q 'front-page.php' <<<"$changed_paths" || grep -q 'single-weekly_updates.php' <<<"$changed_paths"; then
-    echo "Refine weekly updates layout and content"
-    return
-  fi
-
-  if grep -q 'css/main.css' <<<"$changed_paths" || grep -q 'css/main.min.css' <<<"$changed_paths"; then
-    echo "Adjust theme styling updates"
-    return
-  fi
-
-  echo "Update theme files"
-}
-
-if [[ -z "$COMMIT_REF" ]]; then
-  if [[ -z "$COMMIT_MESSAGE" ]]; then
-    COMMIT_MESSAGE="$(suggest_commit_message)"
-    echo "No --commit-message provided. Suggested commit message: $COMMIT_MESSAGE"
-  fi
-
-  git add .
-
-  if git diff --cached --quiet; then
-    echo "No local changes to commit. Using latest commit on current branch."
-  else
-    git commit -a -q -m "$COMMIT_MESSAGE"
-    echo "Committed changes with message: $COMMIT_MESSAGE"
-  fi
-
-  git push origin main
-  COMMIT_REF="$(git rev-parse HEAD)"
-fi
 
 TARGET="${STAGING_SSH_USER}@${STAGING_SSH_HOST}"
 
@@ -194,6 +162,27 @@ for file in "${CHANGED_FILES[@]}"; do
   temp_remote_file="/tmp/growthperiod-deploy/${file}"
   temp_remote_dir="$(dirname "$temp_remote_file")"
 
+  if ((DRY_RUN)); then
+    if [[ "$STAGING_USE_SUDO" == "1" ]]; then
+      if [[ -n "$STAGING_SSH_KEY" ]]; then
+        echo "[dry-run] ssh -p ${STAGING_SSH_PORT} -i '${STAGING_SSH_KEY}' ${TARGET} mkdir -p '${temp_remote_dir}'"
+        echo "[dry-run] scp -P ${STAGING_SSH_PORT} -i '${STAGING_SSH_KEY}' '${file}' '${TARGET}:${temp_remote_file}'"
+        echo "[dry-run] ssh -p ${STAGING_SSH_PORT} -i '${STAGING_SSH_KEY}' ${TARGET} sudo -n mkdir -p '${remote_dir}' && sudo -n mv '${temp_remote_file}' '${remote_file}'"
+      else
+        echo "[dry-run] ssh -p ${STAGING_SSH_PORT} ${TARGET} mkdir -p '${temp_remote_dir}'"
+        echo "[dry-run] scp -P ${STAGING_SSH_PORT} '${file}' '${TARGET}:${temp_remote_file}'"
+        echo "[dry-run] ssh -p ${STAGING_SSH_PORT} ${TARGET} sudo -n mkdir -p '${remote_dir}' && sudo -n mv '${temp_remote_file}' '${remote_file}'"
+      fi
+    elif [[ -n "$STAGING_SSH_KEY" ]]; then
+      echo "[dry-run] ssh -p ${STAGING_SSH_PORT} -i '${STAGING_SSH_KEY}' ${TARGET} mkdir -p '${remote_dir}'"
+      echo "[dry-run] scp -P ${STAGING_SSH_PORT} -i '${STAGING_SSH_KEY}' '${file}' '${TARGET}:${remote_file}'"
+    else
+      echo "[dry-run] ssh -p ${STAGING_SSH_PORT} ${TARGET} mkdir -p '${remote_dir}'"
+      echo "[dry-run] scp -P ${STAGING_SSH_PORT} '${file}' '${TARGET}:${remote_file}'"
+    fi
+    continue
+  fi
+
   if [[ "$STAGING_USE_SUDO" == "1" ]]; then
     ssh "${SSH_ARGS[@]}" "$TARGET" "mkdir -p '$temp_remote_dir'"
     scp "${SCP_ARGS[@]}" "$file" "$TARGET:$temp_remote_file"
@@ -205,9 +194,19 @@ for file in "${CHANGED_FILES[@]}"; do
   echo "Uploaded: $file"
 done
 
-ssh "${SSH_ARGS[@]}" "$TARGET" "sudo -n chown -R '$STAGING_CHOWN_TARGET' '$STAGING_THEME_PATH'"
-echo "Ownership updated: ${STAGING_CHOWN_TARGET} ${STAGING_THEME_PATH}"
-ssh "${SSH_ARGS[@]}" "$TARGET" "sudo -n wo clean --all"
-echo "Cache cleaned: wo clean --all"
+if ((DRY_RUN)); then
+  if [[ -n "$STAGING_SSH_KEY" ]]; then
+    echo "[dry-run] ssh -p ${STAGING_SSH_PORT} -i '${STAGING_SSH_KEY}' ${TARGET} sudo -n chown -R '${STAGING_CHOWN_TARGET}' '${STAGING_THEME_PATH}'"
+    echo "[dry-run] ssh -p ${STAGING_SSH_PORT} -i '${STAGING_SSH_KEY}' ${TARGET} sudo -n wo clean --all"
+  else
+    echo "[dry-run] ssh -p ${STAGING_SSH_PORT} ${TARGET} sudo -n chown -R '${STAGING_CHOWN_TARGET}' '${STAGING_THEME_PATH}'"
+    echo "[dry-run] ssh -p ${STAGING_SSH_PORT} ${TARGET} sudo -n wo clean --all"
+  fi
+else
+  ssh "${SSH_ARGS[@]}" "$TARGET" "sudo -n chown -R '$STAGING_CHOWN_TARGET' '$STAGING_THEME_PATH'"
+  echo "Ownership updated: ${STAGING_CHOWN_TARGET} ${STAGING_THEME_PATH}"
+  ssh "${SSH_ARGS[@]}" "$TARGET" "sudo -n wo clean --all"
+  echo "Cache cleaned: wo clean --all"
+fi
 
 echo "Deploy complete."
