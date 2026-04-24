@@ -164,3 +164,17 @@ img.services__weekly-image-img {
 	max-width: 100%;
 	height: auto;
 }
+
+@media (max-width: 47.99em) {
+	.admin-update-intro__info-title .h3,
+	.admin-update-pdf__link {
+		overflow-wrap: anywhere;
+		word-break: break-word;
+	}
+
+	.admin-update-pdf__link {
+		white-space: normal;
+		line-height: 1.4;
+		text-align: center;
+	}
+}

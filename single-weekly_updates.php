@@ -50,7 +50,7 @@ get_header('', ["headerClasses" => "header--dark"]);
       if( $pdf ) : ?>
       <section class="admin-update-pdf" data-aos="fade-in">
         <div class="container admin-update-pdf__container">
-          <span class="admin-update-pdf__label">Download</span>
+          <span class="admin-update-pdf__label">Download PDF:</span><br/>
           <a class="admin-update-pdf__link" href="<?php echo esc_url( $pdf['url'] ); ?>" target="_blank" rel="noopener noreferrer">
             <?php echo esc_html( $pdf['title'] ? $pdf['title'] : 'Weekly Update PDF' ); ?>
           </a>
