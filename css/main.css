@@ -3734,6 +3734,7 @@ textarea.input {
   text-transform: uppercase;
   letter-spacing: .5px;
   line-height: 13px;
+  margin-top: 4px;
   padding: 4px; 
   text-align: center
 }
@@ -3881,6 +3882,7 @@ textarea.input {
     font-size: 10px;
     text-align: center;
     line-height: 1.1;
+    margin-top: 4px;
     padding: 4px
   }
   .contact-us__form .btn--submit {
@@ -3962,6 +3964,7 @@ textarea.input {
     font-size: 11px;
     text-align: center;
     line-height: 1.1;
+    margin-top: 4px;
     padding: 4px
   }
 }
