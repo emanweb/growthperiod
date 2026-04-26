@@ -181,47 +181,53 @@ img.services__weekly-image-img {
 
 /* Slightly larger floating Contact Us blurb, keeping responsive proportions. */
 .contact-us__link {
-	width: 78px;
-	height: 40px;
+	width: 78px !important;
+	height: 40px !important;
 }
 
 .contact-us__link-text {
-	font-size: 13px;
-	line-height: 1.1;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	width: 100% !important;
+	height: 100% !important;
+	font-size: 13px !important;
+	line-height: 1.1 !important;
+	text-align: center !important;
 }
 
 @media (max-width: 47.99em) {
 	.contact-us__link {
-		width: 66px;
-		height: 34px;
+		width: 66px !important;
+		height: 34px !important;
 	}
 
 	.contact-us__link-text {
-		font-size: 11px;
-		line-height: 1.1;
+		font-size: 11px !important;
+		line-height: 1.1 !important;
 	}
 }
 
 @media (min-width: 48em) {
 	.contact-us__link {
-		width: 90px;
-		height: 46px;
+		width: 90px !important;
+		height: 46px !important;
 	}
 
 	.contact-us__link-text {
-		font-size: 12px;
-		line-height: 1.1;
+		font-size: 12px !important;
+		line-height: 1.1 !important;
 	}
 }
 
 @media (min-width: 64em) {
 	.contact-us__link {
-		width: 98px;
-		height: 50px;
+		width: 98px !important;
+		height: 50px !important;
 	}
 
 	.contact-us__link-text {
-		font-size: 14px;
-		line-height: 1.1;
+		font-size: 14px !important;
+		line-height: 1.1 !important;
 	}
 }
