@@ -3706,8 +3706,8 @@ textarea.input {
   z-index: 90
 }
 .contact-us__link {
-  width: 72px;
-  height: 36px;
+  width: 78px;
+  height: 40px;
   border-radius: 12px 0 0 12px;
   background: #3ab14a;
   color: #fff;
@@ -3728,14 +3728,22 @@ textarea.input {
   transition: box-shadow .3s ease,background-color .3s ease
 }
 .contact-us__link-text {
-  display: block;
-  font-size: 12px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .5px;
-  line-height: 13px;
-  margin-top: 4px;
-  padding: 4px; 
+  line-height: 1.1;
   text-align: center
 }
 .contact-us__link-icon {
@@ -3873,17 +3881,15 @@ textarea.input {
 }
 @media (max-width:47.99em) {
   .contact-us__link {
-    width: 60px;
-    height: 30px;
+    width: 66px;
+    height: 34px;
     border-radius: 12px 0 0 12px;
     gap: 0;
   }
   .contact-us__link-text {
-    font-size: 10px;
+    font-size: 11px;
     text-align: center;
-    line-height: 1.1;
-    margin-top: 4px;
-    padding: 4px
+    line-height: 1.1
   }
   .contact-us__form .btn--submit {
     padding: 10px
@@ -3953,22 +3959,24 @@ textarea.input {
 }
 @media (min-width:48em) {
   .contact-us__link {
-    width: 80px; 
-    height: 40px;
+    width: 90px; 
+    height: 46px;
     border-radius: 12px 0 0 12px
   }
   .contact-us__link-text {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    font-size: 11px;
+    font-size: 12px;
     text-align: center;
-    line-height: 1.1;
-    margin-top: 4px;
-    padding: 4px
+    line-height: 1.1
   }
 }
 @media (min-width:64em) {
+  .contact-us__link {
+    width: 98px;
+    height: 50px
+  }
+  .contact-us__link-text {
+    font-size: 14px
+  }
   .contact-us__form .btn--submit {
     font-size: 16px
   }
