@@ -33,6 +33,7 @@ EOF
 DEFAULT_STAGING_SSH_HOST="20.163.8.61"
 DEFAULT_STAGING_SSH_USER="azureuser"
 DEFAULT_STAGING_THEME_PATH="/var/www/stage.growthperiod.com/htdocs/wp-content/themes/growthperiod"
+DEFAULT_PRODUCTION_THEME_PATH="/var/www/growthperiod.com/htdocs/wp-content/themes/growthperiod"
 if [[ "$(uname -s)" == MINGW* || "$(uname -s)" == CYGWIN* || "$(uname -s)" == MSYS* ]]; then
   DEFAULT_STAGING_SSH_KEY="$HOME/OneDrive/Desktop/WebServer20251021_key.pem"
 else
@@ -76,9 +77,26 @@ while (($#)); do
   shift
 done
 
+STAGING="${STAGING:-Yes}"
+STAGING_NORMALIZED="$(printf '%s' "$STAGING" | tr '[:upper:]' '[:lower:]')"
+
+case "$STAGING_NORMALIZED" in
+  yes)
+    DEFAULT_THEME_PATH="$DEFAULT_STAGING_THEME_PATH"
+    ;;
+  no)
+    DEFAULT_THEME_PATH="$DEFAULT_PRODUCTION_THEME_PATH"
+    ;;
+  *)
+    echo "STAGING must be Yes or NO (got: $STAGING)" >&2
+    exit 1
+    ;;
+esac
+
 STAGING_SSH_HOST="${STAGING_SSH_HOST:-$DEFAULT_STAGING_SSH_HOST}"
 STAGING_SSH_USER="${STAGING_SSH_USER:-$DEFAULT_STAGING_SSH_USER}"
-STAGING_THEME_PATH="${STAGING_THEME_PATH:-$DEFAULT_STAGING_THEME_PATH}"
+#STAGING_THEME_PATH="${STAGING_THEME_PATH:-$DEFAULT_STAGING_THEME_PATH}"
+STAGING_THEME_PATH="${STAGING_THEME_PATH:-$DEFAULT_THEME_PATH}"
 STAGING_SSH_PORT="${STAGING_SSH_PORT:-22}"
 STAGING_SSH_KEY="${STAGING_SSH_KEY:-$DEFAULT_STAGING_SSH_KEY}"
 STAGING_USE_SUDO="${STAGING_USE_SUDO:-0}"

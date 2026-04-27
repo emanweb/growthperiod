@@ -9294,9 +9294,9 @@ textarea.input {
     max-width: 50.4%
   }
   .team-intro__image-holder {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
+    top: auto;
+    left: auto;
     max-width: 45vw
   }
   .team-intro__description {
