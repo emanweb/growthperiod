@@ -165,7 +165,7 @@ get_header('', ["headerClasses" => "header--dark"]);
 			  $expert_position = trim((string) get_field('position'));
 			  $expert_last_name = trim((string) get_field('last_name'));
 			  $expert_first_name = trim((string) get_field('first_name'));
-			  $expert_label = trim($expert_position . ' ' . $expert_last_name . ($expert_first_name !== '' ? ', ' . $expert_first_name : ''));
+			  $expert_label = trim($expert_last_name . ($expert_first_name !== '' ? ', ' . $expert_first_name : ''));
 			  ?>
 			  <div class="team-experts__filter-item popup-link" data-popup="#popupAdvisor<?php echo $experts_listrepeat; ?>" data-filter="<?php echo implode(',', $type_cats); ?>"><?php echo esc_html($expert_label); ?></div>
 			  
