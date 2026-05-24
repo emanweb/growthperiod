@@ -7061,6 +7061,9 @@ textarea.input {
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%)
   }
+  #merger .services-business__description {
+    margin-bottom: -12vw
+  }
 }
 @media (min-width:48em) and (min-width:768px) {
   .services-business__description {
