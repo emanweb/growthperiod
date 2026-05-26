@@ -7062,12 +7062,17 @@ textarea.input {
     transform: translateY(-50%)
   }
   #business .services-business__description, #merger .services-business__description {
-    margin-bottom: -24vw
+    margin-bottom: -20vw
   }
 }
 @media (min-width:48em) and (min-width:1440px) {
   #business .services-business__description, #merger .services-business__description {
     margin-bottom: -12vw
+  }
+}
+@media (min-width:1920px) {
+  #business .services-business__description, #merger .services-business__description {
+    margin-bottom: -6vw
   }
 }
 @media (min-width:48em) and (min-width:768px) {
