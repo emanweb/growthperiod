@@ -7062,7 +7062,7 @@ textarea.input {
     transform: translateY(-50%)
   }
   #business .services-business__description, #merger .services-business__description {
-    margin-bottom: -20vw
+    margin-bottom: -16vw
   }
 }
 @media (min-width:48em) and (min-width:1440px) {
