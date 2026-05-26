@@ -7061,7 +7061,12 @@ textarea.input {
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%)
   }
-  #merger .services-business__description {
+  #business .services-business__description, #merger .services-business__description {
+    margin-bottom: -24px
+  }
+}
+@media (min-width:48em) and (min-width:1440px) {
+  #business .services-business__description, #merger .services-business__description {
     margin-bottom: -12vw
   }
 }
