@@ -63,44 +63,6 @@ get_header('', ["headerClasses" => "header--dark"]);
         </div>
       </section>
 	  <?php endif; ?>
-	  <?php if( have_rows('a_sampling_of_our_clients')): while( have_rows('a_sampling_of_our_clients') ) : the_row(); ?>
-      <section class="experience-clients" id="clients">
-        <div class="container">
-          <h2 class="h2"><?php echo get_sub_field('title'); ?></h2>
-          <div class="experience-clients__alphabet" id="experienceAlphabet">
-		  <span class="is-active" data-letter="all">All</span>
-		  <?php if( have_rows('clients_list')): while( have_rows('clients_list') ) : the_row(); 
-		  $sampling_client_type = get_sub_field('sampling_client_type'); 
-		  ?>
-		  <span data-letter="<?php echo $sampling_client_type['value']; ?>"><?php echo $sampling_client_type['label']; ?></span>
-		  <?php endwhile; endif; ?>
-		  </div>
-          <div class="experience-clients__list swiper" id="experienceClients">
-            <div class="swiper-wrapper">
-			<?php if( have_rows('clients_list')): while( have_rows('clients_list') ) : the_row(); 
-			$gallery = get_sub_field('image'); 
-			if(!empty($gallery)){
-			foreach($gallery as $gal) { ?>
-              <div class="swiper-slide" data-sort="<?php echo get_sub_field('sampling_client_type')['value']; ?>">
-                <div class="experience-clients__list-item">
-                    <?php
-					if(!empty($gal)){ ?>
-					<picture>
-					<img src="<?php echo $gal['url']; ?>" alt="">
-					</picture>
-					<?php } ?>
-                </div>
-              </div>
-			<?php } 
-			}
-			?>
-			<?php endwhile; endif; ?>
-            </div>
-            <div class="swiper-scrollbar"></div>
-          </div>
-        </div>
-      </section>
-	  <?php endwhile; endif; ?>
 	  <?php if( have_rows('case_studies')): while( have_rows('case_studies') ) : the_row(); ?>
       <section class="cases" id="case-studies">
         <div class="container cases__container">
