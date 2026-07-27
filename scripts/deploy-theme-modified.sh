@@ -1,4 +1,19 @@
 #!/usr/bin/env bash
+# Deploy changed theme files to the remote server.
+#
+# Quick start:
+#   Staging (default target):
+#     ./scripts/deploy-theme-modified.sh
+#
+#   Production target:
+#     STAGING=NO ./scripts/deploy-theme-modified.sh
+#
+# Optional examples:
+#   Dry run to staging:
+#     ./scripts/deploy-theme-modified.sh --dry-run
+#
+#   Deploy a specific commit to production:
+#     STAGING=NO ./scripts/deploy-theme-modified.sh --commit <sha>
 set -euo pipefail
 
 usage() {
