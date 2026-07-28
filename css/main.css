@@ -7075,6 +7075,21 @@ textarea.input {
     margin-bottom: -6vw
   }
 }
+@media (min-width:48em) {
+  #geopolitical_risk_management {
+    padding-bottom: 4vw
+  }
+  #geopolitical_risk_management .services-business__description {
+    -webkit-transform: none;
+    transform: none;
+    margin-bottom: 0
+  }
+}
+@media (min-width:1920px) {
+  #geopolitical_risk_management {
+    padding-bottom: 50px
+  }
+}
 @media (min-width:48em) and (min-width:768px) {
   .services-business__description {
     font-size: calc(.0096153846 * 100vw + 8.6153846154px)
