@@ -191,32 +191,22 @@ get_header('', ["headerClasses" => "header--dark"]);
 	  
 
 	  <?php if( have_rows('geopolitical_risk_management')): while( have_rows('geopolitical_risk_management') ) : the_row(); ?>
-      <section class="services-recruiting" id="geopolitical_risk_management">
-        <div class="container services-recruiting__container">
-          <div class="services-recruiting__info" data-aos="fade-in">
-            <h2 class="h3"><?php echo get_sub_field('title'); ?></h2>
-            <div class="services-recruiting__description"><?php echo get_sub_field('description'); ?></div>
-            <?php if(!empty(get_sub_field('link'))) { ?><div class="services-recruiting__button" data-aos="fade-in"><a class="btn-more" href="<?php echo get_sub_field('link')['url']; ?>" target="<?php echo get_sub_field('link')['target']; ?>">
-                <div class="btn-more__text"><?php echo get_sub_field('link')['title']; ?></div>
-                <div class="btn-more__icon">
-                  <svg class="icon" width="24" height="24" viewBox="0 0 24 24">
-                    <use xlink:href="<?php echo get_template_directory_uri(); ?>/images/sprites/main.stack.svg#image-arrow-top-right"></use>
-                  </svg>
-			</div></a></div><?php } ?>
-          </div>
-          <div class="services-recruiting__image" data-aos="fade-in" data-aos-delay="200">
-            <div class="rel">
-              <?php
-				if(!empty(get_sub_field('image'))){ ?>
-				<picture>
-				<?php
-					echo getImageHTMLCodeWebp( get_sub_field('image'), 'full', ['class' => ''] );
-				?>
-				</picture>
-				<?php } ?>
-              <div class="services-recruiting__image-tile"></div>
+      <section class="services-business services-business--light" id="geopolitical_risk_management">
+        <div class="container services-business__container services-business__container--left">
+          <div class="services-business__holder">
+            <div class="services-business__title" data-aos="fade-in">
+              <h2 class="h3"><?php echo get_sub_field('title'); ?></h2>
             </div>
+            <?php
+			if(!empty(get_sub_field('image'))){ ?>
+			<picture>
+			<?php
+				echo getImageHTMLCodeWebp( get_sub_field('image'), 'full', ['class' => ''] );
+			?>
+			</picture>
+			<?php } ?>
           </div>
+          <div class="services-business__description"><?php echo get_sub_field('description'); ?></div>
         </div>
       </section>
 	  <?php endwhile; endif; ?>		
