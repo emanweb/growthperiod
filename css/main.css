@@ -7080,9 +7080,9 @@ textarea.input {
     padding-bottom: 4vw
   }
   #geopolitical_risk_management .services-business__description {
-    -webkit-transform: none;
-    transform: none;
-    margin-bottom: 0
+    -webkit-transform: translateY(-25%);
+    transform: translateY(-25%);
+    margin-bottom: -3vw
   }
 }
 @media (min-width:1920px) {
