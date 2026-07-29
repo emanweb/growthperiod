@@ -35,7 +35,7 @@
     <?php wp_head(); ?>
   </head>
   <body class="preload">
-    <header class="header <?php echo $args['headerClasses']; ?>">
+    <header class="header <?php echo esc_attr($args['headerClasses'] ?? ''); ?>">
       <div class="container header__container"><a class="logo logo--white" href="<?php echo site_url(); ?>">growth [period]</a>
         <div class="header__menu-outer">
           <div class="header__menu">

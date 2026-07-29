@@ -42,7 +42,7 @@
         </div>
     </div>
     <?php endwhile; endif; ?>
-	<footer class="footer <?php echo $args['footerClasses']; ?>">
+	<footer class="footer <?php echo esc_attr($args['footerClasses'] ?? ''); ?>">
       <div class="container footer__container">
         <div class="footer-contacts">
 		  <?php if( have_rows('footer_contact_section', 'option')): ?>
