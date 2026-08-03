@@ -361,7 +361,7 @@ get_header('', ["headerClasses" => "header--dark"]);
 				'posts_per_page' => 2,
 				'ignore_sticky_posts' => false,
 				'orderby' => 'date', 
-				'order' => 'ASC', 
+				'order' => 'DESC', 
 			);  
 			
 			if(!empty(get_sub_field('announcements_and_news_list'))){

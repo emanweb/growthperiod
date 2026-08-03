@@ -30,7 +30,7 @@ get_header('', ["headerClasses" => "header--dark"]);
 				'paged' => $paged,
 				'ignore_sticky_posts' => true,
 				'orderby' => 'date', 
-				'order' => 'ASC', 
+				'order' => 'DESC', 
 			);  
 			
 			$loop = new WP_Query( $args ); 
