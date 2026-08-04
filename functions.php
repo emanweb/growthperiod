@@ -9,7 +9,7 @@
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.3.1' );
+	define( '_S_VERSION', '1.3.2' );
 }
 
 /**
@@ -370,17 +370,10 @@ function growthperiod_render_team_person_popup_content( $post_id, $person_kind )
 	if ( 'leader' === $person_kind ) {
 		$html .= '<div class="team-person__photo">';
 		if ( has_post_thumbnail( $post_id ) ) {
-			$html .= '<picture>';
-			$html .= get_the_post_thumbnail(
-				$post_id,
-				'large',
-				array(
-					'loading'  => 'lazy',
-					'decoding' => 'async',
-					'alt'      => get_the_title( $post_id ),
-				)
-			);
-			$html .= '</picture>';
+			$thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'large' );
+			if ( ! empty( $thumbnail_src[0] ) ) {
+				$html .= '<img src="' . esc_url( $thumbnail_src[0] ) . '" alt="' . esc_attr( get_the_title( $post_id ) ) . '" loading="lazy" decoding="async" />';
+			}
 		}
 		$html .= '</div>';
 	} else {
