@@ -9,7 +9,7 @@
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.2.0' );
+	define( '_S_VERSION', '1.3.0' );
 }
 
 /**
@@ -336,3 +336,89 @@ function growthperiod_weekly_updates_listing_route() {
 	include get_template_directory() . '/archive-weekly_updates.php';
 	exit;
 }
+
+function growthperiod_render_team_person_popup_content( $post_id, $person_kind ) {
+	$post_id = absint( $post_id );
+	if ( ! $post_id ) {
+		return '';
+	}
+
+	$kind_to_type = array(
+		'leader' => 'our-leaders',
+		'expert' => 'our-experts',
+	);
+
+	if ( empty( $kind_to_type[ $person_kind ] ) ) {
+		return '';
+	}
+
+	$post = get_post( $post_id );
+	if ( ! $post || 'publish' !== $post->post_status || $kind_to_type[ $person_kind ] !== $post->post_type ) {
+		return '';
+	}
+
+	$position = (string) get_field( 'position', $post_id );
+	$first_name = trim( (string) get_field( 'first_name', $post_id ) );
+	$last_name = trim( (string) get_field( 'last_name', $post_id ) );
+	$display_name = trim( $first_name . ' ' . $last_name );
+	if ( '' === $display_name ) {
+		$display_name = get_the_title( $post_id );
+	}
+
+	$html = '<div class="team-person">';
+
+	if ( 'leader' === $person_kind ) {
+		$html .= '<div class="team-person__photo">';
+		if ( has_post_thumbnail( $post_id ) ) {
+			$html .= '<picture>';
+			$html .= get_the_post_thumbnail(
+				$post_id,
+				'large',
+				array(
+					'loading'  => 'lazy',
+					'decoding' => 'async',
+					'alt'      => get_the_title( $post_id ),
+				)
+			);
+			$html .= '</picture>';
+		}
+		$html .= '</div>';
+	} else {
+		$expertise = (string) get_field( 'expertise', $post_id );
+		$html .= '<div class="team-person__expertise">';
+		if ( '' !== trim( $expertise ) ) {
+			$html .= '<div class="team-person__expertise-content">';
+			$html .= '<div class="h4">Expertise:</div>' . wp_kses_post( $expertise );
+			$html .= '</div>';
+		}
+		$html .= '</div>';
+	}
+
+	setup_postdata( $post );
+	$content = apply_filters( 'the_content', $post->post_content );
+	wp_reset_postdata();
+
+	$html .= '<div class="team-person__info">';
+	$html .= '<div class="team-person__info-ocupation">' . esc_html( $position ) . '</div>';
+	$html .= '<div class="team-person__info-name h3">' . esc_html( $display_name ) . '</div>';
+	$html .= '<div class="team-person__info-description">' . $content . '</div>';
+	$html .= '</div>';
+	$html .= '</div>';
+
+	return $html;
+}
+
+function growthperiod_team_person_popup_ajax() {
+	$post_id = isset( $_POST['post_id'] ) ? absint( wp_unslash( $_POST['post_id'] ) ) : 0;
+	$person_kind = isset( $_POST['person_kind'] ) ? sanitize_key( wp_unslash( $_POST['person_kind'] ) ) : '';
+
+	$html = growthperiod_render_team_person_popup_content( $post_id, $person_kind );
+
+	if ( '' === $html ) {
+		wp_send_json_error( array( 'message' => 'Unable to load profile.' ), 400 );
+	}
+
+	wp_send_json_success( array( 'html' => $html ) );
+}
+add_action( 'wp_ajax_growthperiod_team_person_popup', 'growthperiod_team_person_popup_ajax' );
+add_action( 'wp_ajax_nopriv_growthperiod_team_person_popup', 'growthperiod_team_person_popup_ajax' );

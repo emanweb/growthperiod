@@ -611,6 +611,60 @@ const popupHide = (popup) => {
     popup.style.paddingRight = '';
 }
 
+const teamPopupCache = new Map();
+
+const loadTeamPopupContent = (triggerElement) => {
+    const popupSelector = triggerElement.getAttribute('data-popup') || '#teamPersonPopup';
+    const popupElement = document.querySelector(popupSelector);
+    const popupContent = popupElement ? popupElement.querySelector('.popup__content') : null;
+    const postId = triggerElement.getAttribute('data-person-id');
+    const personKind = triggerElement.getAttribute('data-person-kind');
+
+    if (!popupElement || !popupContent || !postId || !personKind || typeof ca_ajaxurl === 'undefined') {
+        return Promise.resolve(false);
+    }
+
+    const cacheKey = `${personKind}:${postId}`;
+
+    if (teamPopupCache.has(cacheKey)) {
+        popupContent.innerHTML = teamPopupCache.get(cacheKey);
+        popupShow(popupSelector);
+        return Promise.resolve(true);
+    }
+
+    popupContent.innerHTML = '<div class="team-person"><div class="team-person__info"><div class="team-person__info-description">Loading profile...</div></div></div>';
+    popupShow(popupSelector);
+
+    const body = new URLSearchParams({
+        action: 'growthperiod_team_person_popup',
+        post_id: postId,
+        person_kind: personKind,
+    });
+
+    return fetch(ca_ajaxurl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        },
+        body: body.toString(),
+        credentials: 'same-origin',
+    })
+        .then((response) => response.json())
+        .then((result) => {
+            if (!result || !result.success || !result.data || !result.data.html) {
+                throw new Error('Invalid popup response');
+            }
+
+            teamPopupCache.set(cacheKey, result.data.html);
+            popupContent.innerHTML = result.data.html;
+            return true;
+        })
+        .catch(() => {
+            popupContent.innerHTML = '<div class="team-person"><div class="team-person__info"><div class="team-person__info-description">Unable to load profile. Please try again.</div></div></div>';
+            return false;
+        });
+};
+
 const popups = () => {
     document.addEventListener('click', (e) => {
         const targetElement = getEventTargetElement(e);
@@ -618,8 +672,16 @@ const popups = () => {
             return;
         }
 
-        let popupName = targetElement.classList.contains('popup-link') ? targetElement.getAttribute('data-popup') : targetElement.closest('.popup-link') ? targetElement.closest('.popup-link').getAttribute('data-popup') : null,
+        const popupTrigger = targetElement.classList.contains('popup-link') ? targetElement : targetElement.closest('.popup-link');
+
+        let popupName = popupTrigger ? popupTrigger.getAttribute('data-popup') : null,
             popupClose = targetElement.classList.contains('popup__close') || targetElement.closest('.popup__close');
+
+        if (popupTrigger && popupTrigger.getAttribute('data-person-id') && popupTrigger.getAttribute('data-person-kind')) {
+            loadTeamPopupContent(popupTrigger);
+            e.preventDefault();
+            return;
+        }
 
         if(popupName) {
             popupShow(popupName);
