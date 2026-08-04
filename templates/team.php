@@ -14,7 +14,7 @@ get_header('', ["headerClasses" => "header--dark"]);
 				if(!empty(get_sub_field('image'))){ ?>
 				<picture>
 				<?php
-					echo getImageHTMLCodeWebp( get_sub_field('image'), 'full', ['class' => '', 'loading' => 'lazy', 'decoding' => 'async'] );
+					echo getImageHTMLCodeWebp( get_sub_field('image'), 'full', ['class' => ''] );
 				?>
 				</picture>
 			  <?php } ?>
