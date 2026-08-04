@@ -1,11 +1,14 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     toggleMenu();
     fixedHeader();
-    hideHeaderScrollDown();
-    scrollIntro();
-    scrollClients();
+    if (!isTouchDevice) {
+        hideHeaderScrollDown();
+        scrollIntro();
+        scrollClients();
+        scrollCases();
+        teamSliders();
+    }
     toggleFeedbackForm();
-    scrollCases();
     typeCaptions();
     servicesSlider();
     caseStudiesCarousel();
@@ -17,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     hoverAparts();
     smoothScroll();
     checkForm();
-    teamSliders();
     slideToggleArticle();
 
     document.body.classList.remove('preload');
@@ -49,8 +51,14 @@ const getEventTargetElement = (event) => {
     return target instanceof Element ? target : (target.parentElement || null);
 };
 
+const isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches || navigator.maxTouchPoints > 0;
+
 const fixedHeader = () => {
     let header = document.querySelector('.header');
+    if (!header) {
+        return;
+    }
+
     let checkScroll = () => {
         if (window.scrollY > 0 && window.innerWidth < 768) {
             header.classList.add('is-fixed')
@@ -61,12 +69,16 @@ const fixedHeader = () => {
 
     checkScroll();
 
-    window.addEventListener('scroll', checkScroll, false);
+    window.addEventListener('scroll', checkScroll, { passive: true });
 }
 
 const toggleMenu = () => {
     let menu = document.querySelector(".header__menu-outer"),
         burger = document.querySelector(".header__burger");
+
+    if (!menu || !burger) {
+        return;
+    }
 
 
     burger.addEventListener('click', () => {
@@ -103,22 +115,26 @@ const scrollIntro = () => {
 
         window.addEventListener('scroll', () => {
             scrollIntroFunc()
-        })
+        }, { passive: true })
     }
 }
 
 const hideHeaderScrollDown = () => {
+    let header = document.querySelector('.header');
+    if (!header) {
+        return;
+    }
+
     let didScroll,
         lastScrollTop = 0,
         delta = 5,
-        header = document.querySelector('.header'),
         navbarHeight = header.clientHeight;
 
     checkScroll();
 
     window.addEventListener('scroll', function(event){
         checkScroll();
-    });
+    }, { passive: true });
 
     setInterval(function() {
         if (didScroll) {
@@ -202,7 +218,7 @@ const scrollClients = () => {
                 })
                 list.classList.add('is-started');
             }
-        })
+        }, { passive: true })
     }
 
     const clientsSlider = () => {
@@ -340,7 +356,7 @@ const scrollCases = () => {
                     item.style.margin = '';
                 })
             }
-        })
+        }, { passive: true })
     }
 }
 
@@ -890,7 +906,7 @@ const teamSliders = () => {
             spaceBetween: 10,
             slidesPerView: 'auto',
             direction: 'vertical',
-            autoplay: {
+            autoplay: isTouchDevice ? false : {
                 delay: 1
             },
             freeMode: true,
