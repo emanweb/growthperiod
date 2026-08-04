@@ -144,11 +144,11 @@ get_header('', ["headerClasses" => "header--dark"]);
 	<div class="popup popup--person" id="teamPersonPopup" aria-hidden="true">
 		<div class="popup__container">
 			<div class="popup__close">
-				<svg class="icon" width="30" height="30" viewBox="0 0 30 30">
+				<svg class="icon" width="40" height="40" viewBox="0 0 30 30">
 					<use xlink:href="<?php echo get_template_directory_uri(); ?>/images/sprites/main.stack.svg#image-close"></use>
 				</svg>
 			</div>
-			<div class="popup__content"></div>
+			<div class="popup__content" data-simplebar data-simplebar-auto-hide="false"></div>
 		</div>
 	</div>
 	<?php if( have_rows('clients_worldwide')): while( have_rows('clients_worldwide') ) : the_row(); ?>

@@ -613,6 +613,52 @@ const popupHide = (popup) => {
 
 const teamPopupCache = new Map();
 
+const getPopupContentTarget = (popupElement) => {
+    if (!popupElement) {
+        return null;
+    }
+
+    return popupElement.querySelector('.simplebar-content') || popupElement.querySelector('.popup__content');
+};
+
+const refreshTeamPopupLayout = (popupElement) => {
+    if (!popupElement) {
+        return;
+    }
+
+    const popupContent = popupElement.querySelector('.popup__content');
+    if (popupContent && popupContent.SimpleBar && typeof popupContent.SimpleBar.recalculate === 'function') {
+        popupContent.SimpleBar.recalculate();
+    }
+
+    const scrollWrapper = popupElement.querySelector('.simplebar-content-wrapper');
+    if (scrollWrapper && typeof scrollWrapper.scrollTo === 'function') {
+        scrollWrapper.scrollTo(0, 0);
+        return;
+    }
+
+    if (popupContent) {
+        popupContent.scrollTop = 0;
+    }
+};
+
+const bindTeamPopupImageLayout = (popupElement) => {
+    const contentTarget = getPopupContentTarget(popupElement);
+    if (!contentTarget) {
+        return;
+    }
+
+    contentTarget.querySelectorAll('img').forEach((imageElement) => {
+        if (imageElement.complete) {
+            return;
+        }
+
+        imageElement.addEventListener('load', () => {
+            refreshTeamPopupLayout(popupElement);
+        }, { once: true });
+    });
+};
+
 const loadTeamPopupContent = (triggerElement) => {
     const popupSelector = triggerElement.getAttribute('data-popup') || '#teamPersonPopup';
     const popupElement = document.querySelector(popupSelector);
@@ -627,13 +673,26 @@ const loadTeamPopupContent = (triggerElement) => {
     const cacheKey = `${personKind}:${postId}`;
 
     if (teamPopupCache.has(cacheKey)) {
-        popupContent.innerHTML = teamPopupCache.get(cacheKey);
+        const contentTarget = getPopupContentTarget(popupElement);
+        if (!contentTarget) {
+            return Promise.resolve(false);
+        }
+
+        contentTarget.innerHTML = teamPopupCache.get(cacheKey);
         popupShow(popupSelector);
+        refreshTeamPopupLayout(popupElement);
+        bindTeamPopupImageLayout(popupElement);
         return Promise.resolve(true);
     }
 
-    popupContent.innerHTML = '<div class="team-person"><div class="team-person__info"><div class="team-person__info-description">Loading profile...</div></div></div>';
+    const contentTarget = getPopupContentTarget(popupElement);
+    if (!contentTarget) {
+        return Promise.resolve(false);
+    }
+
+    contentTarget.innerHTML = '<div class="team-person"><div class="team-person__info"><div class="team-person__info-description">Loading profile...</div></div></div>';
     popupShow(popupSelector);
+    refreshTeamPopupLayout(popupElement);
 
     const body = new URLSearchParams({
         action: 'growthperiod_team_person_popup',
@@ -656,11 +715,14 @@ const loadTeamPopupContent = (triggerElement) => {
             }
 
             teamPopupCache.set(cacheKey, result.data.html);
-            popupContent.innerHTML = result.data.html;
+            contentTarget.innerHTML = result.data.html;
+            refreshTeamPopupLayout(popupElement);
+            bindTeamPopupImageLayout(popupElement);
             return true;
         })
         .catch(() => {
-            popupContent.innerHTML = '<div class="team-person"><div class="team-person__info"><div class="team-person__info-description">Unable to load profile. Please try again.</div></div></div>';
+            contentTarget.innerHTML = '<div class="team-person"><div class="team-person__info"><div class="team-person__info-description">Unable to load profile. Please try again.</div></div></div>';
+            refreshTeamPopupLayout(popupElement);
             return false;
         });
 };
