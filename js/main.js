@@ -35,6 +35,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 });
 
+const getEventTargetElement = (event) => {
+    const target = event && event.target;
+
+    if (!target) {
+        return null;
+    }
+
+    if (target.nodeType === Node.TEXT_NODE) {
+        return target.parentElement || null;
+    }
+
+    return target instanceof Element ? target : (target.parentElement || null);
+};
+
 const fixedHeader = () => {
     let header = document.querySelector('.header');
     let checkScroll = () => {
@@ -218,6 +232,10 @@ const toggleFeedbackForm = () => {
         form = document.querySelector("#contactsFrom"),
         close = document.querySelector("#contactsFromClose");
 
+    if (!form || !close) {
+        return;
+    }
+
     function openForm () {
         form.classList.add('is-active');
         document.body.style.overflow = 'hidden';
@@ -225,7 +243,12 @@ const toggleFeedbackForm = () => {
     }
 
     document.addEventListener('click', (e)=>{
-        const trigger = e.target.closest('#contactsFormLink, #contactsFormLinkMenu, .contactsFormLinkMenu');
+        const targetElement = getEventTargetElement(e);
+        if (!targetElement) {
+            return;
+        }
+
+        const trigger = targetElement.closest('#contactsFormLink, #contactsFormLinkMenu, .contactsFormLinkMenu');
         if(trigger) {
             openForm();
             e.preventDefault();
@@ -238,13 +261,16 @@ const toggleFeedbackForm = () => {
         document.body.style.paddingRight = ''
     }, false);
 
-
-
     document.addEventListener('click', (e) => {
-        const withinBoundariesForm = e.composedPath().includes(form),
-            withinBoundariesLinkForm = e.composedPath().includes(linkForm),
-            withinBoundariesLinkMenu = e.composedPath().includes(linkMenu),
-            withinBoundariesLinkMenuClass = e.composedPath().includes(linkMenuClass);
+        const targetElement = getEventTargetElement(e);
+        if (!targetElement) {
+            return;
+        }
+
+        const withinBoundariesForm = form.contains(targetElement),
+            withinBoundariesLinkForm = linkForm ? linkForm.contains(targetElement) : false,
+            withinBoundariesLinkMenu = linkMenu ? linkMenu.contains(targetElement) : false,
+            withinBoundariesLinkMenuClass = linkMenuClass ? linkMenuClass.contains(targetElement) : false;
 
         if(!withinBoundariesForm && !withinBoundariesLinkForm && !withinBoundariesLinkMenu && !withinBoundariesLinkMenuClass && form.classList.contains('is-active')) {
             form.classList.remove('is-active');
@@ -543,7 +569,14 @@ const popupShow = (popup) => {
 
 }
 const popupHide = (popup) => {
-    popup = popup ||  document.querySelector(popup);
+    if (!popup) {
+        return;
+    }
+
+    popup = typeof popup === 'string' ? document.querySelector(popup) : popup;
+    if (!popup) {
+        return;
+    }
 
     let video = popup.querySelector('.video--popup video');
     if(video) {
@@ -564,16 +597,20 @@ const popupHide = (popup) => {
 
 const popups = () => {
     document.addEventListener('click', (e) => {
-        let _target = e.target,
-            popupName = _target.classList.contains('popup-link') ? _target.getAttribute('data-popup') : _target.closest('.popup-link') ? _target.closest('.popup-link').getAttribute('data-popup') : null,
-            popupClose = _target.classList.contains('popup__close');
+        const targetElement = getEventTargetElement(e);
+        if (!targetElement) {
+            return;
+        }
+
+        let popupName = targetElement.classList.contains('popup-link') ? targetElement.getAttribute('data-popup') : targetElement.closest('.popup-link') ? targetElement.closest('.popup-link').getAttribute('data-popup') : null,
+            popupClose = targetElement.classList.contains('popup__close') || targetElement.closest('.popup__close');
 
         if(popupName) {
             popupShow(popupName);
             e.preventDefault();
         }
         if(popupClose) {
-            popupHide(_target.closest('.popup'))
+            popupHide(targetElement.closest('.popup'))
         }
 
     }, false);
@@ -776,11 +813,23 @@ const hoverAparts = () => {
 
 const smoothScroll = () => {
     document.addEventListener('click', (e) => {
-        let _target = e.target;
+        const targetElement = getEventTargetElement(e);
+        if (!targetElement) {
+            return;
+        }
 
-        if(_target.getAttribute('data-smooth-scroll')) {
-            console.log(e)
-            let element = document.querySelector(_target.getAttribute('href'));
+        const scrollTrigger = targetElement.getAttribute('data-smooth-scroll') ? targetElement : targetElement.closest('[data-smooth-scroll]');
+        if (!scrollTrigger) {
+            return;
+        }
+
+        const targetSelector = scrollTrigger.getAttribute('href');
+        if (!targetSelector) {
+            return;
+        }
+
+        const element = document.querySelector(targetSelector);
+        if (element) {
             element.scrollIntoView({ behavior: 'smooth', block: 'start'});
             e.preventDefault();
             return false

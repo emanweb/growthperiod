@@ -153,7 +153,7 @@ function growthperiod_scripts() {
 	wp_enqueue_script( 'growthperiod-vimeo-player-js', get_template_directory_uri() . '/js/player.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'growthperiod-readmore-js', get_template_directory_uri() . '/js/readmore.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'growthperiod-simplebar-js', get_template_directory_uri() . '/js/simplebar.js', array(), _S_VERSION, true );
-	wp_enqueue_script( 'growthperiod-main-js', get_template_directory_uri() . '/js/main.min.js', array(
+	wp_enqueue_script( 'growthperiod-main-js', get_template_directory_uri() . '/js/main.js', array(
 		'growthperiod-appear-js',
 		'growthperiod-aos-js',
 		'growthperiod-swiper-js',
