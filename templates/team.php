@@ -14,7 +14,7 @@ get_header('', ["headerClasses" => "header--dark"]);
 				if(!empty(get_sub_field('image'))){ ?>
 				<picture>
 				<?php
-					echo getImageHTMLCodeWebp( get_sub_field('image'), 'full', ['class' => ''] );
+					echo getImageHTMLCodeWebp( get_sub_field('image'), 'large', ['class' => ''] );
 				?>
 				</picture>
 			  <?php } ?>
@@ -58,7 +58,7 @@ get_header('', ["headerClasses" => "header--dark"]);
               <div class="team-leadership__item-image">
                 <?php 
 				if(get_post_thumbnail_id( get_the_ID())){ ?> 
-					<picture><img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>" alt="<?php the_title(); ?>" loading="lazy" decoding="async" /></picture>
+					<picture><?php echo get_the_post_thumbnail( get_the_ID(), 'large', ['loading' => 'lazy', 'decoding' => 'async', 'alt' => get_the_title()] ); ?></picture>
 				<?php } ?>
                 <div class="btn-more">
                   <div class="btn-more__text">Bio</div>
@@ -91,7 +91,7 @@ get_header('', ["headerClasses" => "header--dark"]);
 					  <div class="team-person__photo">';
 						if(get_post_thumbnail_id( get_the_ID())){ 
 							$popup .='<picture>';
-							$popup .= '<img src="'.get_the_post_thumbnail_url(get_the_ID(), 'full').'" alt="'.get_the_title().'" loading="lazy" decoding="async" />';
+							$popup .= get_the_post_thumbnail( get_the_ID(), 'large', ['loading' => 'lazy', 'decoding' => 'async', 'alt' => get_the_title()] );
 							$popup .='</picture>';
 						} 
 					  $popup .='</div>
@@ -215,7 +215,7 @@ get_header('', ["headerClasses" => "header--dark"]);
           <?php
 			if(!empty(get_sub_field('image'))){ ?>
 				<picture>
-				<?php echo getImageHTMLCodeWebp( get_sub_field('image'), 'full', ['class' => ''] ); ?>
+				<?php echo getImageHTMLCodeWebp( get_sub_field('image'), 'large', ['class' => ''] ); ?>
 				</picture>
 			<?php } ?>
         </div>
