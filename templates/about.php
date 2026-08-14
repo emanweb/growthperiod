@@ -176,7 +176,7 @@ get_header('', ["headerClasses" => "header--dark"]);
             ?>
             <article class="about-sets-us-apart__list-item<?php echo $is_active ? ' is-active' : ''; ?>" role="listitem" tabindex="0" data-apart-index="<?php echo $apart_index; ?>">
               <div class="about-sets-us-apart__list-content" data-aos="fade-in">
-                <div class="about-sets-us-apart__list-index"><?php echo sprintf('%02d', $apart_index); ?></div>
+                
                 <h3 class="about-sets-us-apart__list-title"><?php echo get_sub_field('title'); ?></h3>
                 <div class="about-sets-us-apart__list-description"><?php echo get_sub_field('description'); ?></div>
               </div>
