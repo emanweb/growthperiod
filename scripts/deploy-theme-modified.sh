@@ -25,7 +25,10 @@ Configured defaults in script:
   STAGING_SSH_HOST     20.163.8.61
   STAGING_SSH_USER     azureuser
   STAGING_THEME_PATH   /var/www/stage.growthperiod.com/htdocs/wp-content/themes/growthperiod
-  STAGING_SSH_KEY      /Users/emanuelcosta/Desktop/SSH/WebServer20251021_key.pem
+  STAGING_SSH_KEY      Auto-detected by OS:
+                       macOS:   /Users/emanuelcosta/Desktop/SSH/WebServer20251021_key.pem
+                       Windows: /c/Users/emanw/OneDrive/Desktop/SSH/WebServer20251021_key.pem
+                       WSL:     /mnt/c/Users/emanw/OneDrive/Desktop/SSH/WebServer20251021_key.pem
 
 Optional env vars (override defaults):
   STAGING_SSH_HOST     SSH host
@@ -49,10 +52,17 @@ DEFAULT_STAGING_SSH_HOST="20.163.8.61"
 DEFAULT_STAGING_SSH_USER="azureuser"
 DEFAULT_STAGING_THEME_PATH="/var/www/stage.growthperiod.com/htdocs/wp-content/themes/growthperiod"
 DEFAULT_PRODUCTION_THEME_PATH="/var/www/growthperiod.com/htdocs/wp-content/themes/growthperiod"
-if [[ "$(uname -s)" == MINGW* || "$(uname -s)" == CYGWIN* || "$(uname -s)" == MSYS* ]]; then
-  DEFAULT_STAGING_SSH_KEY="$HOME/OneDrive/Desktop/WebServer20251021_key.pem"
+DEFAULT_STAGING_SSH_KEY_MAC="/Users/emanuelcosta/Desktop/SSH/WebServer20251021_key.pem"
+DEFAULT_STAGING_SSH_KEY_WINDOWS="/c/Users/emanw/OneDrive/Desktop/SSH/WebServer20251021_key.pem"
+DEFAULT_STAGING_SSH_KEY_WSL="/mnt/c/Users/emanw/OneDrive/Desktop/SSH/WebServer20251021_key.pem"
+
+UNAME_S="$(uname -s)"
+if [[ "$UNAME_S" == MINGW* || "$UNAME_S" == CYGWIN* || "$UNAME_S" == MSYS* ]]; then
+  DEFAULT_STAGING_SSH_KEY="$DEFAULT_STAGING_SSH_KEY_WINDOWS"
+elif grep -qi microsoft /proc/version 2>/dev/null; then
+  DEFAULT_STAGING_SSH_KEY="$DEFAULT_STAGING_SSH_KEY_WSL"
 else
-  DEFAULT_STAGING_SSH_KEY="/Users/emanuelcosta/Desktop/SSH/WebServer20251021_key.pem"
+  DEFAULT_STAGING_SSH_KEY="$DEFAULT_STAGING_SSH_KEY_MAC"
 fi
 
 DRY_RUN=0
@@ -91,6 +101,11 @@ while (($#)); do
   esac
   shift
 done
+
+# Default to deploying the last commit (HEAD) when no --commit is supplied.
+if [[ -z "$COMMIT_REF" ]]; then
+  COMMIT_REF="HEAD"
+fi
 
 STAGING="${STAGING:-Yes}"
 STAGING_NORMALIZED="$(printf '%s' "$STAGING" | tr '[:upper:]' '[:lower:]')"
