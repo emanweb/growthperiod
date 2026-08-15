@@ -13,7 +13,7 @@
 #     ./scripts/deploy-theme-modified.sh --dry-run
 #
 #   Deploy a specific commit to production:
-#     STAGING=NO ./scripts/deploy-theme-modified.sh --commit <sha>
+#     STAGE_USE_SUDO=1 STAGING=NO ./scripts/deploy-theme-modified.sh --commit <sha>
 set -euo pipefail
 
 usage() {

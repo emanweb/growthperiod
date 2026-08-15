@@ -231,3 +231,130 @@ img.services__weekly-image-img {
 		line-height: 1.1 !important;
 	}
 }
+
+/* Copied from customizer */
+/*Misc adjustments*/
+#capture{
+	background: transparent;
+}
+
+#capture .services-business__description,
+#capture .services-business__title{
+	background: #f4f2f0;
+}
+
+#capture .services-business__title{
+	right: -1px;
+}
+
+#recruiting{
+	background: #e0e5e4;
+	padding-top: 5vw;
+}
+
+#recruiting .services-recruiting__image-tile span{
+	background: #e0e5e4;
+}
+
+#gwsupport h2,
+.services-recruiting__info .h3{
+	line-height: 1.2em;
+}
+
+@media (min-width: 768px){
+	#capture .services-business__description{
+		transform: none;
+			margin-top: -15%;
+			z-index: 9;
+			position: relative;
+			margin-bottom: 10%;
+	}
+}
+
+#gwsupport .services-recruiting__arrows{
+	margin-top: -12%;
+}	
+
+/*DOGE page*/
+.site-main.container .featured-content{
+	padding-top: 130px;
+}
+
+h1.featured-title{
+	font-size: 3rem;
+}
+
+.featured-content .featured-content{
+	padding-top: 0 !important;
+}
+
+.contact__button .contact-us__link-text{
+	transform: none;
+	writing-mode: initial;
+	margin: 0;
+	margin-bottom: 10px;
+}
+
+.contact__button .btn-more {
+	width: 172px;
+	height: 100px;
+  border-radius: 0 0px 90px 90px;
+  background: #3ab14a;
+  color: #fff;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+  transition: box-shadow .3s ease,background-color .3s ease;
+	padding-top: 5px;
+	margin: 15px auto;
+}
+
+.contact__button .btn-more:hover{
+	background: #000;
+}
+
+.doge-posts-grid{
+	margin-top: 90px;
+	margin-bottom: 90px;
+}
+
+.doge-image{
+	max-width: 450px;
+}
+
+@media (max-width: 992px){
+	.doge-image{ 
+		float: none !important;
+		max-width: 100% !important;
+		margin: 0 auto !important;
+    display: block;
+	}
+}
+
+/* ERC: Fix about us list section spacing */
+@media (min-width: 1024px) {
+    .about-sets-us-apart__list-item {
+        /* max-height: 210px; */
+    }
+}
+@media (min-width: 2048px) {
+.about-sets-us-apart__list {
+    min-height: 600px;
+}
+	.about-sets-us-apart__list-item {
+		margin: 40px;
+	}
+}
+/* ERC: Fix the posts layout */
+article {
+    max-width: 80%;
+    margin: 0 auto;
+	  padding-top: 130px;
+}
+nav.navigation.post-navigation {
+	text-align: center;
+}
