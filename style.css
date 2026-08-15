@@ -337,8 +337,8 @@ h1.featured-title{
 
 /* ERC: Fix about us list section spacing */
 @media (min-width: 1024px) {
-    .about-sets-us-apart__list-item {
-        /* max-height: 210px; */
+    .about-sets-us-apart__list-content {
+        height: 100%;
     }
 }
 @media (min-width: 2048px) {
