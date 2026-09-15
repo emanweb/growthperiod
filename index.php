@@ -19,7 +19,7 @@ get_header('', ["headerClasses" => "header--dark"]);
       <section class="news">
         <div class="container news__container">
           <div class="news__header" data-aos="fade-in">
-            <h1 class="h2"><span class="accent">Announcements</span> and&nbsp;news</h1>
+            <h1 class="h2"><span class="accent">News,</span> Insights, and Announcements</h1>
           </div>
 		  <?php
 		    $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
