@@ -280,8 +280,10 @@ img.services__weekly-image-img {
 	padding-top: 130px;
 }
 
+/* Same fluid scale as the case study title (.h3), capped at the previous 3rem desktop size */
 h1.featured-title{
-	font-size: 3rem;
+	font-size: min(3rem, calc(.03125 * 100vw + 8px));
+	line-height: 1.2;
 }
 
 .featured-content .featured-content{
