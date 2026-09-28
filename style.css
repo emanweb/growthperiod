@@ -280,9 +280,9 @@ img.services__weekly-image-img {
 	padding-top: 130px;
 }
 
-/* Same fluid scale as the case study title (.h3), capped at the previous 3rem desktop size */
+/* Keep news article titles fluid, but cap them lower so they do not feel oversized on tablets/desktops. */
 h1.featured-title{
-	font-size: min(3rem, calc(.03125 * 100vw + 8px));
+	font-size: clamp(1.75rem, calc(1.35rem + 1.8vw), 2.75rem);
 	line-height: 1.2;
 }
 
