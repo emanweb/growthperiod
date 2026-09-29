@@ -174,7 +174,8 @@ done < <(
       exit 1
     fi
 
-    git diff-tree --root --no-commit-id --name-only -r --diff-filter=ACMRTUXB "$COMMIT_REF"
+    # -m --first-parent makes merge commits list what they brought into the branch.
+    git diff-tree --root --no-commit-id --name-only -r -m --first-parent --diff-filter=ACMRTUXB "$COMMIT_REF"
   else
     {
       git diff --name-only --diff-filter=ACMRTUXB
