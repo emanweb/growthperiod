@@ -357,6 +357,11 @@ article {
     margin: 0 auto;
 	  padding-top: 130px;
 }
+/* Keep featured and in-content images from overflowing the post on small screens */
+article img {
+	max-width: 100%;
+	height: auto;
+}
 nav.navigation.post-navigation {
 	text-align: center;
 }
